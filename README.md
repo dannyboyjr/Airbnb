@@ -51,8 +51,8 @@ Returns the information about the current user that is logged in.
 
 * Require Authentication: true
 * Request
-  * Method: ?
-  * URL: ?
+  * Method: GET
+  * URL: /me
   * Body: none
 
 * Successful Response
@@ -78,8 +78,8 @@ information.
 
 * Require Authentication: false
 * Request
-  * Method: ?
-  * URL: ?
+  * Method: POST
+  * URL: /session
   * Headers:
     * Content-Type: application/json
   * Body:
@@ -145,8 +145,8 @@ user's information.
 
 * Require Authentication: false
 * Request
-  * Method: ?
-  * URL: ?
+  * Method: POST
+  * URL: /users
   * Headers:
     * Content-Type: application/json
   * Body:
@@ -1409,7 +1409,7 @@ Return spots filtered by query parameters.
 * Require Authentication: false
 * Request 
   * Method: GET
-  * URL: /spots/
+  * URL: /spots
   * Query Parameters
     * page: integer, minimum: 0, maximum: 10, default: 0
     * size: integer, minimum: 0, maximum: 20, default: 20
