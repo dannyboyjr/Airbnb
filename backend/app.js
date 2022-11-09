@@ -15,8 +15,9 @@ const isProduction = environment === 'production';
 
 
 const app = express();
-//middleware for logging information about requests and responses:
-app.use(morgan('dev'));
+
+app.use(morgan('dev')); //middleware for logging information about requests and responses:
+
 //middleware for parsing cookies and the express.json middleware for parsing JSON bodies of requests with Content-Type of "application/json"
 app.use(cookieParser());
 app.use(express.json());
@@ -45,11 +46,11 @@ if (!isProduction) {
     })
   );
 
-  // backend/app.js
+
 const routes = require('./routes');
 
 
-app.use(routes); // Connect all the routes
+app.use(routes); 
 
 
 //ERROR HANDLING
@@ -62,7 +63,7 @@ app.use((_req, _res, next) => {
   next(err);
 });
 
-// Process sequelize errors
+// Process sequelize errors. Meant to catch any vaidatiator errors.
 app.use((err, _req, _res, next) => {
   // check if error is a Sequelize error:
   if (err instanceof ValidationError) {
@@ -71,7 +72,7 @@ app.use((err, _req, _res, next) => {
   }
   next(err);
 });
-// Error formatter
+// Error formatter. sets status of Error.
 app.use((err, _req, res, _next) => {
   res.status(err.status || 500);
   console.error(err);
