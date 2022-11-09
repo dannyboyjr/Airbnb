@@ -13,10 +13,18 @@ module.exports = {
         type: Sequelize.STRING
       },
       spotId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: "Spots",
+          key: "id"
+        },
       },
       userId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: "Users",
+          key: "id"
+        },
       },
       startDate: {
         type: Sequelize.DATE
