@@ -9,13 +9,10 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      id: {
-        type: Sequelize.INTEGER
-      },
       ownerId: {
         type: Sequelize.INTEGER,
         references: {
-          model: "User",
+          model: "Users",
           key: "id",
         },
       },
@@ -47,15 +44,18 @@ module.exports = {
         type: Sequelize.DECIMAL
       },
       previewImage: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull: true,
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.literal("CURRENT_TIMESTAMP")
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.literal("CURRENT_TIMESTAMP")
       }
     });
   },
