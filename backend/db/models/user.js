@@ -5,8 +5,8 @@ const { Model, Validator } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     toSafeObject() {
-      const { id, username, email } = this; // context will be the User instance
-      return { id, username, email };
+      const { id, firstName, lastName, username, email} = this; // context will be the User instance
+      return { id, firstName, lastName, username, email  };
     }
     validatePassword(password) {
       return bcrypt.compareSync(password, this.hashedPassword.toString());
@@ -45,7 +45,7 @@ module.exports = (sequelize, DataTypes) => {
 
       //connecting users to spot userId 
       User.hasMany(models.Spot, {
-        foreignkey: "ownerId",
+        foreignkey: "userId",
         onDelete: "cascade",
         hooks: true
         });
@@ -73,6 +73,7 @@ module.exports = (sequelize, DataTypes) => {
       username: {
         type: DataTypes.STRING,
         allowNull: false,
+        unique: true,
         validate: {
           len: [4, 30],
           isNotEmail(value) {

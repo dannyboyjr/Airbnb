@@ -33,12 +33,12 @@ module.exports = (sequelize, DataTypes) => {
 
 
       Spot.belongsTo(models.User, {
-        foreignKey: "ownerId",
+        foreignKey: "userId",
       });
     }
   }
   Spot.init({
-    ownerId: DataTypes.INTEGER,
+    userId: DataTypes.INTEGER,
     address: DataTypes.STRING,
     city: DataTypes.STRING,
     state: DataTypes.STRING,

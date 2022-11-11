@@ -9,28 +9,6 @@ const { handleValidationErrors } = require('../../utils/validation');
 const router = express.Router();
 
 
-router.post(
-    '/',
-    async (req, res, next) => {
-        const { credential, password } = req.body;
-
-        const user = await User.login({credential, password });
-
-        if(!user) {
-            const err = new Error("Login Failed");
-            err.status = 401;
-            err.title = "Login Failed";
-            err.errors = ['The provided credentials were invalid.'];
-            return next(err);
-        }
-
-        await setTokenCookie(res, user);
-
-        return res.json({user});
-    }
-);
-
-
 //logout route - removes token cookie and returns json success
 router.delete('/', (_req, res) => {
       res.clearCookie('token');
@@ -39,12 +17,16 @@ router.delete('/', (_req, res) => {
   );
 
 
-  // return ession user as Json under key of user. return empty object if no session
+  // return session user as Json under key of user. return empty object if no session
   router.get('/', restoreUser, (req, res) => {
-      const { user } = req;
+      const { user } = req
+      const returnUser = user.toSafeObject()
+      const token = req.cookies.token
+      returnUser.token = token
 
+    
       if (user) {
-        return res.json({ user: user.toSafeObject()});
+        return res.json({ user: returnUser });
       } else return res.json({});
     }
   );
@@ -65,7 +47,7 @@ router.delete('/', (_req, res) => {
       const { credential, password } = req.body;
   
       const user = await User.login({ credential, password });
-  
+      console.log(user)
       if (!user) {
         const err = new Error('Login failed');
         err.status = 401;
@@ -74,7 +56,8 @@ router.delete('/', (_req, res) => {
         return next(err);
       }
   
-      await setTokenCookie(res, user);
+      let token = await setTokenCookie(res, user);
+      user.dataValues.token = token;
   
       return res.json({
         user

@@ -6,7 +6,7 @@ module.exports = {
     
       await queryInterface.bulkInsert('Spots', [
         {
-          ownerId: 1,
+          userId: 1,
           address: "2087 E Village Point Way",
           city: "Sandy",
           state: "UT",
@@ -19,7 +19,7 @@ module.exports = {
           previewImage: null
       },
       {
-        ownerId: 1,
+        userId: 1,
         address: "810 Bandolier Ln ",
         city: "Washington",
         state: "UT",
@@ -32,7 +32,7 @@ module.exports = {
         previewImage: null
     },
       {
-        ownerId: 2,
+        userId: 2,
         address: "Donky Way",
         city: "Los Angeles",
         state: "CA",
@@ -45,7 +45,7 @@ module.exports = {
         previewImage: null
     },
     {
-      ownerId: 3,
+      userId: 3,
       address: "1446 Ocean Dr Association",
       city: "Miami",
       state: "FL",
