@@ -13,19 +13,19 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
 
       Spot.hasMany(models.Review, {
-        foreignkey: "spotId",
+        foreignKey: "spotId",
         onDelete: "cascade",
         hooks: true
         });
 
       Spot.hasMany(models.Booking, {
-        foreignkey: "spotId",
+        foreignKey: "spotId",
         onDelete: "cascade",
         hooks: true
         });
 
       Spot.hasMany(models.SpotImage, {
-        foreignkey: "spotId",
+        foreignKey: "spotId",
         onDelete: "cascade",
         hooks: true
         });
@@ -47,7 +47,10 @@ module.exports = (sequelize, DataTypes) => {
     lng: DataTypes.DECIMAL,
     name: DataTypes.STRING,
     description: DataTypes.STRING,
-    price: DataTypes.DECIMAL,
+    price: {
+      type: DataTypes.DECIMAL,
+      allowNull: false,
+    },
     previewImage: DataTypes.INTEGER
   }, {
     sequelize,

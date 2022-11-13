@@ -45,21 +45,21 @@ module.exports = (sequelize, DataTypes) => {
 
       //connecting users to spot userId 
       User.hasMany(models.Spot, {
-        foreignkey: "userId",
+        foreignKey: "userId",
         onDelete: "cascade",
         hooks: true
         });
 
         //connecting userid from bookings to user
         User.hasMany(models.Booking, {
-          foreignkey: "userId",
+          foreignKey: "userId",
           onDelete: "cascade",
           hooks: true
           });
 
         //connecting userid from Reviews to user
         User.hasMany(models.Review, {
-          foreignkey: "userId",
+          foreignKey: "userId",
           onDelete: "cascade",
           hooks: true
           });
