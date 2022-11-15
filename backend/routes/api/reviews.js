@@ -52,7 +52,26 @@ router.post("/:reviewId/images", requireAuth, async (req,res, next)=> {
 
 
 //edit review
+router.put("/:reviewId", requireAuth, async (req, res, next)=>{
+    const reviewId = parseInt(req.params.reviewId)
+    const { review, stars } = req.body
+    
+    const editReview = await Review.findByPk(reviewId)
 
+    if (!editReview) {
+        const err = new Error("Review couldn't be found");
+        err.status = 404;
+        err.title = 'Review not Found';
+        err.errors = [" 404: Provided reviewId not found"];
+        return next(err);
+    }
+
+    await editReview.update({
+        review,
+        stars
+    })
+    res.json(editReview)
+})
 
 
 
