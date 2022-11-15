@@ -34,7 +34,7 @@ router.get("/current", requireAuth, async (req, res)=>{
 router.post("/:reviewId/images", requireAuth, async (req,res, next)=> {
         const reviewId = parseInt(req.params.reviewId)
         const { url } = req.body
-
+    //MAKE DRY
         if (!await Review.findByPk(reviewId)) {
             const err = new Error("Review couldn't be found");
             err.status = 404;
@@ -54,15 +54,24 @@ router.post("/:reviewId/images", requireAuth, async (req,res, next)=> {
 //edit review
 router.put("/:reviewId", requireAuth, async (req, res, next)=>{
     const reviewId = parseInt(req.params.reviewId)
+    const userAuth = req.user.id
     const { review, stars } = req.body
     
     const editReview = await Review.findByPk(reviewId)
-
+    //MAKE DRY
     if (!editReview) {
         const err = new Error("Review couldn't be found");
         err.status = 404;
         err.title = 'Review not Found';
         err.errors = [" 404: Provided reviewId not found"];
+        return next(err);
+    }
+    //MAKE DRY 
+    if (userAuth != editReview.dataValues.userId) {
+        const err = new Error("Not your comment. ");
+        err.status = 404;
+        err.title = 'UnAuthorized';
+        err.errors = [" 404: Not Authorized"];
         return next(err);
     }
 
