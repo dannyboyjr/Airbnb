@@ -285,7 +285,7 @@ router.post("/:spotIdForBooking/bookings", requireAuth, async (req, res, next)=>
 
 
 //Get all Bookings for a Spot By Id
-router.get("/:spotId/bookings", requireAuth, async (req, res) => {
+router.get("/:spotId/bookings", requireAuth, async (req, res, next) => {
     let spotId = req.params.spotId
 
     //MAKE DRY
