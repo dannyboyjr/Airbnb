@@ -1,5 +1,5 @@
 const express = require("express");
-const { Spot, SpotImage, Review, User, ReviewImage } = require('../../db/models');
+const { Spot, SpotImage, Review, User, ReviewImage, Booking } = require('../../db/models');
 const { requireAuth } = require("../../utils/auth")
 let { Sequelize } = require('sequelize');
 const newError = require("../../utils/newError")
@@ -235,7 +235,76 @@ router.post("/:spotId/reviews", requireAuth, async (req, res, next)=>{
 
 
 
+//BOOKINGS ROUTES 
 
+
+
+
+router.post("/:spotIdForBooking/bookings", requireAuth, async (req, res, next)=>{
+    const spotId = parseInt(req.params.spotIdForBooking);
+    const userId = req.user.toSafeObject().id;
+    const { startDate, endDate } = req.body;
+
+    //user cannot book on own spot
+    const spot = await Spot.findOne({
+        where:{
+            id: spotId
+
+        }
+    })
+    //MAKE DRY
+    if(!spot){
+        const err = new Error("Spot doesn't exist!");
+        err.status = 404;
+        err.title = 'Unauthorized';
+        err.errors = ["Provided spot not found"];
+        return next(err);
+    }
+    if(spot.userId === userId){
+        //MAKE DRY
+        const err = new Error("Cannot book your own spot!");
+        err.status = 403;
+        err.title = 'Unauthorized';
+        err.errors = ["Cant book own spot"];
+        return next(err);
+    }
+
+    const createBooking = await Booking.create({
+        spotId,
+        userId,
+        startDate,
+        endDate
+
+    })
+
+
+
+    res.json({message: "Booking Success!", createBooking})
+
+})
+
+
+//Get all Bookings for a Spot By Id
+router.get("/:spotId/bookings", requireAuth, async (req, res) => {
+    let spotId = req.params.spotId
+
+    //MAKE DRY
+    if(!await Spot.findByPk(spotId)){
+        const err = new Error("Spot doesn't exist!");
+        err.status = 404;
+        err.title = 'Unauthorized';
+        err.errors = ["Provided spot not found"];
+        return next(err);
+    }
+
+    const spotBookings = await Spot.findByPk(spotId, {
+        include: [
+            {model: Booking}
+        ]
+    });
+    
+    res.json(spotBookings)
+})
 
 
 

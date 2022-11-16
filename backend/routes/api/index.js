@@ -4,6 +4,7 @@ const sessionRouter = require("./session.js")
 const usersRouter = require("./users.js")
 const spotsRouter = require("./spots.js")
 const reviewsRouter = require("./reviews.js")
+const bookingsRouter = require("./bookings.js")
 const { restoreUser } = require("../../utils/auth.js")
 
 
@@ -15,8 +16,9 @@ router.use(restoreUser);
 
 router.use("/session", sessionRouter); //login / logout router
 router.use("/users", usersRouter); //for signup users
-router.use("/spots", spotsRouter);
+router.use("/spots", spotsRouter); // for singups
 router.use("/reviews", reviewsRouter)
+router.use("/bookings", bookingsRouter);
 
 router.post('/test', (req, res) => {
   res.json({ requestBody: req.body });
