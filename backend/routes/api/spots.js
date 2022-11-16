@@ -163,14 +163,6 @@ router.delete("/:spotId", requireAuth, async (req, res, next) =>{
 })
 
 
-
-
-
-
-
-
-
-
 //Create an image for a spot
 router.post('/:spotId/images', async (req, res, next) => {
     const spotId = parseInt(req.params.spotId)
@@ -271,12 +263,42 @@ router.post("/:spotId/reviews", requireAuth, async (req, res, next)=>{
 
 })
 
+//delete spot image
+
+router.delete("/:spotId/images/:imageId", requireAuth, async (req, res, next)=>{
+    const spotId = parseInt(req.params.spotId)
+    const spotImageId = parseInt(req.params.imageId)
+    const userAuthId = req.user.id
+
+    const spot = await Spot.findByPk(spotId);
+    const doomedSpotImage = await SpotImage.findByPk(spotImageId);
+
+    //MAKE DRY
+    if (!doomedSpotImage) {
+        const err = new Error("Spot image could not be found");
+        err.status = 404;
+        err.title = "Unauthorized";
+        err.errors = [" 404: Spot image could not be found"];
+        return next(err);
+    }
+
+    //MAKE DRY (also one of these in reviews)
+    if (userAuthId != spot.dataValues.userId) {
+        const err = new Error("Cannot Delete. Not your Spot!");
+        err.status = 403;
+        err.title = 'Unuthorized';
+        err.errors = [" 403: Not authorized"];
+        return next(err);
+    }
+
+    await doomedSpotImage.destroy()
+
+    res.json({message: "Spot image successfully deleted"})
+})
+
 
 
 //BOOKINGS ROUTES 
-
-
-
 
 router.post("/:spotIdForBooking/bookings", requireAuth, async (req, res, next)=>{
     const spotId = parseInt(req.params.spotIdForBooking);

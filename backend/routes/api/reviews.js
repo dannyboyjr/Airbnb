@@ -1,5 +1,5 @@
 const express = require("express");
-const { Spot, SpotImage, Review, User, ReviewImage } = require('../../db/models');
+const { Spot, Review, User, ReviewImage } = require('../../db/models');
 const { requireAuth } = require("../../utils/auth");
 let { Sequelize } = require('sequelize');
 const newError = require("../../utils/newError");
@@ -110,5 +110,33 @@ router.delete("/:reviewId", requireAuth, async (req, res, next)=>{
 })
 
 
+//delete review image
+router.delete("/:reviewId/images/:imageId", requireAuth, async (req, res, next)=>{
+    const reviewId = parseInt(req.params.reviewId)
+    const imageId = parseInt(req.params.imageId)
+    const userAuth = req.user.id
+
+    const review = await Review.findByPk(reviewId)
+    const doomedReviewImage = await ReviewImage.findByPk(imageId)
+    //MAKE DRY
+    if (!doomedReviewImage || !review) {
+        const err = new Error("Review image couldn't be found");
+        err.status = 404;
+        err.title = 'Review not Found';
+        err.errors = [" 404: Provided reviewId not found"];
+        return next(err);
+    }
+    //MAKE DRY 
+    if (userAuth != review.dataValues.userId) {
+        const err = new Error("Unable to Delete. Not your Review.");
+        err.status = 403;
+        err.title = 'Unauthorized';
+        err.errors = [" 403: Not Authorized"];
+        return next(err);
+    }
+
+    await doomedReviewImage.destroy()
+    res.json({message: "Review image successfully deleted."})
+})
 
 module.exports = router;
