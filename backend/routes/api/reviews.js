@@ -69,7 +69,7 @@ router.put("/:reviewId", requireAuth, async (req, res, next)=>{
     //MAKE DRY 
     if (userAuth != editReview.dataValues.userId) {
         const err = new Error("Not your comment. ");
-        err.status = 404;
+        err.status = 403;
         err.title = 'UnAuthorized';
         err.errors = [" 404: Not Authorized"];
         return next(err);
@@ -82,7 +82,32 @@ router.put("/:reviewId", requireAuth, async (req, res, next)=>{
     res.json(editReview)
 })
 
+//Delete Review
+router.delete("/:reviewId", requireAuth, async (req, res, next)=>{
+    const reviewId = parseInt(req.params.reviewId)
+    const userAuth = req.user.id
+    
+    const doomedReview = await Review.findByPk(reviewId)
+    //MAKE DRY
+    if (!doomedReview) {
+        const err = new Error("Review couldn't be found");
+        err.status = 404;
+        err.title = 'Review not Found';
+        err.errors = [" 404: Provided reviewId not found"];
+        return next(err);
+    }
+    //MAKE DRY 
+    if (userAuth != doomedReview.dataValues.userId) {
+        const err = new Error("Unable to Delete. Not your Review.");
+        err.status = 403;
+        err.title = 'UnAuthorized';
+        err.errors = [" 404: Not Authorized"];
+        return next(err);
+    }
 
+    await doomedReview.destroy()
+    res.json({message: "Review successfully deleted."})
+})
 
 
 
