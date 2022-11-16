@@ -46,7 +46,7 @@ router.put("/:bookingId", requireAuth, async (req, res, next) =>{
         const err = new Error("Not your booking!. ");
         err.status = 403;
         err.title = 'UnAuthorized';
-        err.errors = [" 404: Not Authorized"];
+        err.errors = [" 403: Not Authorized"];
         return next(err);
     }
 
@@ -58,6 +58,33 @@ router.put("/:bookingId", requireAuth, async (req, res, next) =>{
     res.json(editBooking)
 
 });
+
+//Delete booking
+router.delete("/:bookingId", requireAuth, async (req, res, next)=>{
+    const bookingId = parseInt(req.params.bookingId)
+    const userAuth = req.user.id
+    
+    const doomedBooking = await Booking.findByPk(bookingId)
+    //MAKE DRY
+    if (!doomedBooking) {
+        const err = new Error("Booking couldn't be found");
+        err.status = 404;
+        err.title = 'Unauthorized';
+        err.errors = [" 404: Provided bookingId not found"];
+        return next(err);
+    }
+    //MAKE DRY 
+    if (userAuth != doomedBooking.dataValues.userId) {
+        const err = new Error("Unable to Delete. Not your booking.");
+        err.status = 403;
+        err.title = 'Unauthorized';
+        err.errors = [" 403: Not authorized"];
+        return next(err);
+    }
+
+    await doomedBooking.destroy()
+    res.json({message: "Booking successfully deleted."})
+})
 
 
 
