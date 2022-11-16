@@ -132,7 +132,6 @@ router.put("/:spotId", async (req, res, next)=>{
 
 
 
-
 //Create an image for a spot
 router.post('/:spotId/images', async (req, res, next) => {
     const spotId = parseInt(req.params.spotId)
