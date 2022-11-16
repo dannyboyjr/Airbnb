@@ -132,6 +132,45 @@ router.put("/:spotId", async (req, res, next)=>{
 
 
 
+router.delete("/:spotId", requireAuth, async (req, res, next) =>{
+    const spotId = parseInt(req.params.spotId)
+    const userAuthId = req.user.id
+    const doomedSpot = await Spot.findByPk(spotId);
+
+    //MAKE DRY
+    if (!doomedSpot) {
+        const err = new Error("Spot could not be found");
+        err.status = 404;
+        err.title = "Unauthorized";
+        err.errors = [" 404: Spot could not be found"];
+        return next(err);
+    }
+
+    //MAKE DRY (also one of these in reviews)
+    if (userAuthId != doomedSpot.dataValues.userId) {
+        const err = new Error("Cannot Delete. Not your booking!");
+        err.status = 403;
+        err.title = 'UnAuthorized';
+        err.errors = [" 404: Not Authorized"];
+        return next(err);
+    }
+
+    
+
+    await doomedSpot.destroy()
+
+    res.json({message: "Spot successfully deleted"})
+})
+
+
+
+
+
+
+
+
+
+
 //Create an image for a spot
 router.post('/:spotId/images', async (req, res, next) => {
     const spotId = parseInt(req.params.spotId)
