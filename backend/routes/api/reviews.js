@@ -3,6 +3,8 @@ const { Spot, Review, User, ReviewImage } = require('../../db/models');
 const { requireAuth } = require("../../utils/auth");
 let { Sequelize } = require('sequelize');
 const newError = require("../../utils/newError");
+const { check } = require('express-validator');
+const { handleValidationErrors } = require('../../utils/validation')
 const router = express.Router();
 
 
@@ -30,10 +32,18 @@ router.get("/current", requireAuth, async (req, res)=>{
     res.json(reviews)
 })
 
+    const pictureUrlValidator = [ 
+        check("url")
+            .isURL()
+            .withMessage("must be a URL"),
+        handleValidationErrors
+    ]
+
 //post reviews image based on reviewId
-router.post("/:reviewId/images", requireAuth, async (req,res, next)=> {
+router.post("/:reviewId/images", requireAuth, pictureUrlValidator, async (req,res, next)=> {
         const reviewId = parseInt(req.params.reviewId)
         const { url } = req.body
+
     //MAKE DRY
         if (!await Review.findByPk(reviewId)) {
             const err = new Error("Review couldn't be found");
@@ -42,12 +52,29 @@ router.post("/:reviewId/images", requireAuth, async (req,res, next)=> {
             err.errors = [" 404: Provided reviewId not found"];
             return next(err);
         }
+
+        let images = await Review.findByPk(reviewId, {
+            include: [{
+                model: ReviewImage,
+            }],
+        })
+        const totalImageCount  = images.dataValues.ReviewImages.length 
+
+        if(totalImageCount > 10){
+            const err = new Error("Maximum number of images for this resource was reached");
+            err.status = 403;
+            err.title = 'Review not Found';
+            err.errors = ["Maximum number of images for this resource was reached. must be under 10"];
+            return next(err);
+        }
+
+
         const reviewImg = await ReviewImage.create({
                 reviewId,
                 url
         })
 
-        res.json({message: "review Image added", reviewImg})
+        res.json({message: "review Image added", reviewImg })
 })
 
 
