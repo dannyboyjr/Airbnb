@@ -38,15 +38,15 @@ router.put("/:bookingId", requireAuth, async (req, res, next) =>{
         const err = new Error("Booking couldn't be found");
         err.status = 404;
         err.title = 'Booking not Found';
-        err.errors = [" 404: Provided bookingId not found"];
+        err.errors = ["Provided bookingId not found"];
         return next(err);
     }
     //MAKE DRY (also one of these in reviews)
     if (userAuth != editBooking.dataValues.userId) {
         const err = new Error("Not your booking!. ");
         err.status = 403;
-        err.title = 'UnAuthorized';
-        err.errors = [" 403: Not Authorized"];
+        err.title = 'Unauthorized';
+        err.errors = ["Not Authorized"];
         return next(err);
     }
 
@@ -70,7 +70,7 @@ router.delete("/:bookingId", requireAuth, async (req, res, next)=>{
         const err = new Error("Booking couldn't be found");
         err.status = 404;
         err.title = 'Unauthorized';
-        err.errors = [" 404: Provided bookingId not found"];
+        err.errors = ["Provided bookingId not found"];
         return next(err);
     }
     //MAKE DRY 
@@ -78,7 +78,7 @@ router.delete("/:bookingId", requireAuth, async (req, res, next)=>{
         const err = new Error("Unable to Delete. Not your booking.");
         err.status = 403;
         err.title = 'Unauthorized';
-        err.errors = [" 403: Not authorized"];
+        err.errors = ["Not authorized"];
         return next(err);
     }
 

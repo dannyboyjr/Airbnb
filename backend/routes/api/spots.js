@@ -79,7 +79,7 @@ router.get("/", queryValidator, async (req, res) => {
         const err = new Error("Spots could not be found");
         err.status = 404;
         err.title = "Error";
-        err.errors = [" 404: Spot could not be found"];
+        err.errors = ["Spot could not be found"];
         return next(err);
     }
 
@@ -183,7 +183,7 @@ router.get("/:spotId", async (req, res, next) => {
         const err = new Error("Spot couldn't be found");
         err.status = 404;
         err.title = 'Spot not Found';
-        err.errors = [" 404: Provided SpotId not found"];
+        err.errors = ["Provided SpotId not found"];
         return next(err);
     }
 
@@ -211,7 +211,7 @@ router.get("/:spotId", async (req, res, next) => {
         const err = new Error("Spots could not be found");
         err.status = 404;
         err.title = "Error";
-        err.errors = [" 404: Spot could not be found"];
+        err.errors = ["Spot could not be found"];
         return next(err);
     }
     
@@ -245,7 +245,7 @@ router.put("/:spotId", requireAuth, spotChecker, async (req, res, next) => {
         const err = new Error("Spot could not be edited");
         err.status = 404;
         err.title = 'Error';
-        err.errors = [" 404: Spot could not be edited"];
+        err.errors = ["Spot could not be edited"];
         return next(err);
     }
 
@@ -277,7 +277,7 @@ router.delete("/:spotId", requireAuth, async (req, res, next) => {
         const err = new Error("Spot could not be found");
         err.status = 404;
         err.title = "Unauthorized";
-        err.errors = [" 404: Spot could not be found"];
+        err.errors = ["Spot could not be found"];
         return next(err);
     }
 
@@ -286,7 +286,7 @@ router.delete("/:spotId", requireAuth, async (req, res, next) => {
         const err = new Error("Cannot Delete. Not your booking!");
         err.status = 403;
         err.title = 'UnAuthorized';
-        err.errors = [" 404: Not Authorized"];
+        err.errors = ["Not Authorized"];
         return next(err);
     }
 
@@ -315,7 +315,7 @@ router.post('/:spotId/images', requireAuth, pictureUrlValidator, async (req, res
         const err = new Error("Spot couldn't be found");
         err.status = 404;
         err.title = 'SpotImage upload Failed';
-        err.errors = [" 404: Provided SpotId not found"];
+        err.errors = ["Provided SpotId not found"];
         return next(err);
     }
 
@@ -323,7 +323,7 @@ router.post('/:spotId/images', requireAuth, pictureUrlValidator, async (req, res
         const err = new Error("Cannot post image. Not your Spot!");
         err.status = 403;
         err.title = 'Unuthorized';
-        err.errors = [" 403: Not authorized"];
+        err.errors = ["Not authorized"];
         return next(err);
     }
 
@@ -364,7 +364,7 @@ router.get("/:spotId/reviews", async (req, res, next) => {
         const err = new Error("Spot couldn't be found");
         err.status = 404;
         err.title = 'Spot not Found';
-        err.errors = [" 404: Provided SpotId not found"];
+        err.errors = ["Provided SpotId not found"];
         return next(err);
     }
 
@@ -408,15 +408,25 @@ router.post("/:spotId/reviews", requireAuth, createReviewValidator, async (req, 
     const spotId = parseInt(req.params.spotId)
     const userId = req.user.toSafeObject().id
     const { review, stars } = req.body
+    const spot = await Spot.findByPk(spotId)
 
     //Error if spot not found
-    if (!await Spot.findByPk(spotId)) {
+    if (!spot) {
         const err = new Error("Spot couldn't be found");
         err.status = 404;
         err.title = 'No spot found';
-        err.errors = [" 404: Provided spot not found"];
+        err.errors = ["Provided spot not found"];
         return next(err);
     }
+    
+    if(userId == spot.userId){
+        const err = new Error("Cannot post review on your own spot!");
+        err.status = 403;
+        err.title = 'Unauthroized';
+        err.errors = [ `Unable to post review on a spot you own`];
+        return next(err);
+    }
+
     //error if upser already posted review to spot
     const reviewAlreadyExists = await Review.findOne({
         where: {
@@ -433,6 +443,8 @@ router.post("/:spotId/reviews", requireAuth, createReviewValidator, async (req, 
         err.errors = [ `already posted review for this spot`];
         return next(err);
     }
+
+   
 
     // post review for spot
     const newReview = await Review.create({
@@ -461,7 +473,7 @@ router.delete("/:spotId/images/:imageId", requireAuth, async (req, res, next) =>
         const err = new Error("Spot image could not be found");
         err.status = 404;
         err.title = "Unauthorized";
-        err.errors = [" 404: Spot image could not be found"];
+        err.errors = ["Spot image could not be found"];
         return next(err);
     }
 
@@ -470,7 +482,7 @@ router.delete("/:spotId/images/:imageId", requireAuth, async (req, res, next) =>
         const err = new Error("Cannot Delete. Not your Spot!");
         err.status = 403;
         err.title = 'Unuthorized';
-        err.errors = [" 403: Not authorized"];
+        err.errors = ["Not authorized"];
         return next(err);
     }
 
