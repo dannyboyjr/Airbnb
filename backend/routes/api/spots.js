@@ -564,15 +564,19 @@ router.post("/:spotIdForBooking/bookings", requireAuth, async (req, res, next) =
 //Get all Bookings for a Spot By Id
 router.get("/:spotId/bookings", requireAuth, async (req, res, next) => {
     let spotId = req.params.spotId
+    let userId = req.user.id
+    let spot = await Spot.findByPk(spotId)
 
     //MAKE DRY
-    if (!await Spot.findByPk(spotId)) {
+    if (!spot) {
         const err = new Error("Spot couldn't be found!");
         err.status = 404;
         err.title = 'Unauthorized';
         err.errors = ["Provided spot not found"];
         return next(err);
     }
+
+    if (userId == spot.userId){
 
     const spotBookings = await Booking.findAll({
         where:{
@@ -587,8 +591,16 @@ router.get("/:spotId/bookings", requireAuth, async (req, res, next) => {
         ],
 
     });
-
     res.json(spotBookings)
+} else {
+    const spotBookings = await Booking.findAll({
+        where:{
+            spotId: spotId
+        }
+    });
+    res.json(spotBookings)
+}
+
 })
 
 
