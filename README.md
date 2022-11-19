@@ -1373,7 +1373,7 @@ Delete an existing image for a Review.
 * Require proper authorization: Review must belong to the current user
 * Request
   * Method: DELETE
-  * URL: /spots/:spotId/reviews/:reviewId/images/:imageId
+  * URL: /reviews/:reviewId/images/:imageId
   * Body: none
 
 * Successful Response
