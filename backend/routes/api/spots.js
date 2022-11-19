@@ -567,17 +567,25 @@ router.get("/:spotId/bookings", requireAuth, async (req, res, next) => {
 
     //MAKE DRY
     if (!await Spot.findByPk(spotId)) {
-        const err = new Error("Spot doesn't exist!");
+        const err = new Error("Spot couldn't be found!");
         err.status = 404;
         err.title = 'Unauthorized';
         err.errors = ["Provided spot not found"];
         return next(err);
     }
 
-    const spotBookings = await Spot.findByPk(spotId, {
+    const spotBookings = await Booking.findAll({
+        where:{
+            spotId: spotId
+        },
         include: [
-            { model: Booking }
-        ]
+            
+            {
+                model: User,
+            attributes: ["id", "firstName", "lastName"]
+            },
+        ],
+
     });
 
     res.json(spotBookings)
