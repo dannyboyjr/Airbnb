@@ -349,8 +349,9 @@ router.post('/:spotId/images', requireAuth, pictureUrlValidator, async (req, res
     const addImage = await SpotImage.create({
         spotId,
         url,
-        previewImage
+        preview: previewImage
     })
+    
     res.json({ message: "Image added successfully", addImage })
 })
 
