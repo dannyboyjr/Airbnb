@@ -55,7 +55,7 @@ router.get("/", queryValidator, async (req, res) => {
     const pagination = {}
     const where = {}
 
-    if (page >= 0 && size >= 0) {
+    if (page >= 1 && size >= 1) {
         pagination.limit = size;
         pagination.offset = size * (page - 1);
     }
