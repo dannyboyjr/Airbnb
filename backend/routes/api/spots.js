@@ -49,7 +49,7 @@ router.get("/", queryValidator, async (req, res) => {
     let size = req.query.size
     let { minPrice, maxPrice } = req.query
 
-    page = parseInt(page) || 0;
+    page = parseInt(page) || 1;
     size = parseInt(size) || 20;
 
     const pagination = {}
@@ -351,7 +351,7 @@ router.post('/:spotId/images', requireAuth, pictureUrlValidator, async (req, res
         url,
         previewImage
     })
-    res.json({ message: "Image added successfully", addImage, totalImageCount })
+    res.json({ message: "Image added successfully", addImage })
 })
 
 
