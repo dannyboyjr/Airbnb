@@ -1,9 +1,15 @@
 'use strict';
 
+let options = {};
+if (process.env.NODE_ENV === 'production') {
+  options.schema = process.env.SCHEMA;  // define your schema in options object
+}
+
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
-    await queryInterface.bulkInsert('ReviewImages', [
+    options.tableName = 'ReviewImages';  
+    await queryInterface.bulkInsert(options, [
       {
         reviewId: 5,
         url: "https://cdn.theatlantic.com/media/old_wire/img/upload/2011/05/12/Crackhouse%20623%20Peter%20Moskos.jpg"
@@ -17,8 +23,8 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
-
-    await queryInterface.bulkDelete('ReviewImages', null, {});
+    options.tableName = 'ReviewImages';  
+    await queryInterface.bulkDelete(options, null, {});
 
   }
 };
