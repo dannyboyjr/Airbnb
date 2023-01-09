@@ -60,11 +60,7 @@ router.get("/", queryValidator, async (req, res) => {
         pagination.offset = size * (page - 1);
     }
 
-
-    
-
     const spots = await Spot.findAll({
-
 
         include: [
             {

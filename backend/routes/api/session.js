@@ -20,12 +20,12 @@ router.delete('/', (_req, res) => {
   // return session user as Json under key of user. return empty object if no session
   router.get('/', restoreUser, (req, res) => {
       const { user } = req
-      const returnUser = user.toSafeObject()
-      const token = req.cookies.token
-      returnUser.token = token
-
-    
+     
       if (user) {
+        const returnUser = user.toSafeObject()
+        const token = req.cookies.token
+        returnUser.token = token
+        
         return res.json({ user: returnUser });
       } else return res.json({});
     }
@@ -57,7 +57,7 @@ router.delete('/', (_req, res) => {
       }
   
       let token = await setTokenCookie(res, user);
-      user.dataValues.token = token;
+      // // user.dataValues.token = token;
   
       return res.json({
         user

@@ -1,0 +1,21 @@
+
+.spotCard{
+    border: 1px solid;
+    margin: 10px;
+    width: 180px;
+    height: 200px;
+    border-radius: 6%;
+
+}
+
+.locationAndStars{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.link {
+    text-decoration: none; 
+    color: black;
+
+}
