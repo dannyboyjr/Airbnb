@@ -1,4 +1,4 @@
-import SpotList from "../components/SpotList/SpotList"
+import SpotList from '../components/Spot/SpotList/SpotList'
 import {useEffect} from 'react'
 
 

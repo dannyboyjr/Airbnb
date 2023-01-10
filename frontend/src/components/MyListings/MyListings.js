@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { loadAllSpots } from '../../store/spots';
-import SpotCard from'../SpotCard/SpotCard'
+import SpotCard from '../Spot/SpotCard/SpotCard'
 
 
 

@@ -1,3 +1,4 @@
+
 import EditSpotForm from '../components/Spot/EditSpotForm/EditSpotForm'
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -19,7 +20,7 @@ const EditSpotPage = () => {
 
     return (
         <div>
-            <h1>Edit Spot</h1>
+            <h1>Edit Review</h1>
             {isLoaded &&
             <EditSpotForm spot={spotById} id={id}/>
 }

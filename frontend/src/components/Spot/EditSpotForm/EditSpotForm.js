@@ -1,7 +1,7 @@
 
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import {editSpot} from '../../store/spotByIdStore'
+import {editSpot} from '../../../store/spotByIdStore'
 
 const EditSpotForm = ({spot, id}) => {
 

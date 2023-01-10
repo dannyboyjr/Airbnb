@@ -1,8 +1,8 @@
 import './SpotList.css'
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { loadAllSpots } from '../../store/spots';
-import SpotCard from'../SpotCard/SpotCard'
+import { loadAllSpots } from '../../../store/spots';
+import SpotCard from '../SpotCard/SpotCard'
 
 
 const SpotList = () => {
