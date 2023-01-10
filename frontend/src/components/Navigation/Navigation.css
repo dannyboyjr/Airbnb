@@ -1,9 +1,22 @@
-.nav-bar{
-    background-color: lightgray;
-   
+nav{
+    display: flex;
+
 }
 
-.sessionButtons{
-   
-    margin: 15px;
+.nav-bar-buttons{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 70px;
+    border-bottom: 1px solid rgba(94, 94, 94, 0.5);
+    
+
 }
+
+.navbar-logo {
+    height: 30px;
+    width: 100px;
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Airbnb_Logo_B%C3%A9lo.svg/1200px-Airbnb_Logo_B%C3%A9lo.svg.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+  }

@@ -28,8 +28,7 @@ useEffect(()=>{
     {isLoaded && 
 
     spotReviews.map((review, index) =>(
-        // <ReviewCard key={index} review={review} />
-        <EditReview review={review} />
+            <ReviewCard key={index} review={review} />
     ))
 
        
