@@ -1,0 +1,23 @@
+
+.bookingFormCard{
+    display: box;
+    min-width: 400px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.bookingForm{
+    display: grid;
+
+}
+
+.formButton{
+    margin: 5px;
+    height: 60px;
+    width: 250px;
+    text-align: center !important;
+    background: linear-gradient(to right, rgb(230, 30, 77) 0%, rgb(227, 28, 95) 50%);
+    color: white;
+    border-radius: 10px;
+    font-size: 15px;
+}

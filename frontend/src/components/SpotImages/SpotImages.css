@@ -1,5 +1,12 @@
 .spotImages{
-    background-color: lightgray;
+    border: 1px solid black;
     margin: 10px;
-    height: 250px;
+    height: 400px;
+    width: 1060px;
+    margin: auto center;
+}
+.previewImg{
+    height: 334px;
+    width: 560px;
+    border-radius: 15px;
 }

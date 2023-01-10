@@ -1,10 +1,16 @@
 import './ReviewCard.css'
 import { useDispatch, useSelector } from 'react-redux'
-import { deleteReview } from '../../store/spotByIdStore';
+import { deleteReview } from '../../../store/spotByIdStore'
 
 const ReviewCard = ({review}) => {
     let sessionUser = useSelector(state => state.session.user);
     let dispatch = useDispatch()
+
+
+    
+    if(sessionUser == undefined) {
+        sessionUser = -1
+    }
 
     
 

@@ -1,4 +1,9 @@
 
+.reviewCard{
+  border: 1px solid black;
+}
+
+
 button {
     background-color: transparent;
     border: none;
@@ -11,3 +16,4 @@ button {
   .off {
     color: #ccc;
   }
+

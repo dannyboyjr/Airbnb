@@ -2,6 +2,7 @@ import './SpotCard.css'
 import { Link } from "react-router-dom";
 
 const SpotCard = ({spot}) => {
+    console.log(spot)
 
     return(
         <Link className="link" to={`/spots/${spot.id}`}>

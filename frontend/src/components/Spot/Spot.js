@@ -20,7 +20,7 @@ const Spot = ({id}) => {
     if(sessionUser == undefined) {
         sessionUser = -1
     }
-//----------------------------------------- ALSO ON SUBMIT REVIEW
+//----------------------------------------- ALSO ON SUBMIT REVIEW && REVIEW CARD
 
     useEffect(()=>{
 
@@ -55,7 +55,7 @@ const Spot = ({id}) => {
                 </div>
                 }
             </div> 
-            <SpotImages spotId={id}/>
+            <SpotImages spot={spotById}/>
             <p><span>${spotById.price} a night</span> -  hosted by {spotById.User.firstName} {spotById.User.lastName} </p>
 
             <div>

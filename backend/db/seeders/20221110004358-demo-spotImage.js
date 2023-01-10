@@ -19,7 +19,7 @@ module.exports = {
       {
         spotId: 2,
         url: "https://i.insider.com/6022b33167d1e300113c5037?width=1136&format=jpeg",
-        preview: true,
+        preview: false,
       },
     ], {});
 
