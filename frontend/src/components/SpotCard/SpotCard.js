@@ -12,7 +12,7 @@ const SpotCard = ({spot}) => {
         {spot.name}
            <div className='locationAndStars'>
                 {spot.city},{spot.state} 
-           <div>{spot.averageStars}</div>
+           <div>{Math.round(spot.averageStars * 100) / 100}</div>
            </div> 
             ${spot.price} night
 
@@ -27,3 +27,4 @@ const SpotCard = ({spot}) => {
 
 
 export default SpotCard;
+

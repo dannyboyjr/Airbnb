@@ -12,6 +12,7 @@ const Reviews = ({id}) => {
     const spotReviews = useSelector(state => state.spotById.Reviews)
     let sessionUser = useSelector(state => state.session.user);
     const dispatch = useDispatch()
+    const test = false
 
 
 useEffect(()=>{
@@ -28,9 +29,9 @@ useEffect(()=>{
     {isLoaded && 
 
     spotReviews.map((review, index) =>(
-            <ReviewCard key={index} review={review} />
+            <EditReview key={index} review={review} />
     ))
-
+    
        
 
     }

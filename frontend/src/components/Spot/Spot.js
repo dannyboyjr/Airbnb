@@ -44,7 +44,7 @@ const Spot = ({id}) => {
             <div>
                 <h1>{spotById.name}</h1>
             <div >
-               stars {spotById.averageStars} · 
+               stars {Math.round(spotById.averageStars * 100) / 100} · 
                {spotById.totalReviews} reviews ·
                {spotById.totalReviews} · 
                {spotById.city} {spotById.state} {spotById.country} · 
