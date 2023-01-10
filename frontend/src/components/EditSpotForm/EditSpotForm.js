@@ -31,7 +31,6 @@ const EditSpotForm = ({spot, id}) => {
 
             spot = {id, name,description,address,city,state,country,lat,lng,price}
 
-            console.log(spot)
 
                 
             dispatch(editSpot(spot))

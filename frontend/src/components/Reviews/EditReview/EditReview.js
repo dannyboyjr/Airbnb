@@ -1,7 +1,7 @@
 
 import { useDispatch, useSelector } from 'react-redux'
 import {useState, useEffect} from 'react'
-import { deleteReview } from '../../../store/spotByIdStore';
+import { deleteReview, editAReview } from '../../../store/spotByIdStore';
 
 const EditReview = ({review}) => {
     let sessionUser = useSelector(state => state.session.user);
@@ -15,7 +15,15 @@ const EditReview = ({review}) => {
 
     const handleEdit = () => {
 
+      const editedReview = {
+        review:reviewText,
+        stars:rating
+      }
+      console.log(editedReview)
+      dispatch(editAReview(editedReview, review.id))
+
     }
+
     const handleDelete = () => {
         console.log(review)
         dispatch(deleteReview(review.id))

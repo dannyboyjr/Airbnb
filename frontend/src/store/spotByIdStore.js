@@ -107,8 +107,8 @@ export const deleteReview = (id) => async (dispatch) => {
 }
 
 
-export const editReview = (review) => async (dispatch) => {
-  const response = await csrfFetch(`/reviews/${review.id}`, {
+export const editAReview = (review, id) => async (dispatch) => {
+  const response = await csrfFetch(`/api/reviews/${id}`, {
     method: "PUT",
     body: JSON.stringify(review)
   });
@@ -142,7 +142,7 @@ const spotByIdReducer = (state = initialState, action) => {
       return newState;
     case ADD_REVIEW:
       newState = { ...state }
-      console.log(action);//SOMETHING LOOKS FISHY HERE
+      newState[action.spot.id] = action.spot
       case DELETE_REVIEW:
         delete newState[action.id]
         return newState;
