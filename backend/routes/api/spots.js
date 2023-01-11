@@ -66,6 +66,9 @@ router.get("/", queryValidator, async (req, res) => {
             {
                 model: Review,
             },
+            {
+                model: SpotImage
+            },
         ],
 
         ...pagination
@@ -189,6 +192,7 @@ router.get("/:spotId", async (req, res, next) => {
             model: Review,
             // attributes: [],
         },
+        
         {
             model: SpotImage,
         },

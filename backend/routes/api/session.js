@@ -26,7 +26,7 @@ router.delete('/', (_req, res) => {
         const token = req.cookies.token
         returnUser.token = token
         
-        return res.json({ user: returnUser });
+        return res.json(returnUser);
       } else return res.json({});
     }
   );
@@ -59,9 +59,7 @@ router.delete('/', (_req, res) => {
       let token = await setTokenCookie(res, user);
       // // user.dataValues.token = token;
   
-      return res.json({
-        user
-      });
+      return res.json(user);
     }
   );
 

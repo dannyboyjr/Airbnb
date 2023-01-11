@@ -8,7 +8,7 @@ function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
 
   let sessionLinks;
-  if (sessionUser) {
+  if (sessionUser.id) {
     sessionLinks = (
       <div className='sessionButtons'>
         <NavLink exact to="/create">Create Listings</NavLink>

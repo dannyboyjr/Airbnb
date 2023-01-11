@@ -38,9 +38,9 @@ router.post('/', validateSignup, async (req, res, next) => {
     let token = await setTokenCookie(res, user);
     user.dataValues.token = token;
 
-    return res.json({
+    return res.json(
       user
-    });
+    );
   } catch (e) {
     e.status = 403
     return next(e)

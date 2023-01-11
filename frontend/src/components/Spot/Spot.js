@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import {loadSpotById} from '../../store/spotByIdStore'
 import {deleteSpotById} from '../../store/spotByIdStore'
 import { useHistory } from 'react-router-dom';
-import SpotImages from './SpotImages/SpotImages'
+import SpotImages from '../Spot/SpotImages/SpotImages'
 
 
 const Spot = ({id}) => {
@@ -16,11 +16,7 @@ const Spot = ({id}) => {
     const history = useHistory();
 
 
-    //THIS IS UGGLY NO SURE WHY I CANT GET BUTTONS TO APPEAR WITHOUT THIS> NEED HELP
-    if(sessionUser == undefined) {
-        sessionUser = -1
-    }
-//----------------------------------------- ALSO ON SUBMIT REVIEW && REVIEW CARD
+
 
     useEffect(()=>{
 

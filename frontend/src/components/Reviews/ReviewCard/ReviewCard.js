@@ -7,13 +7,6 @@ const ReviewCard = ({review}) => {
     let dispatch = useDispatch()
 
 
-    
-    if(sessionUser == undefined) {
-        sessionUser = -1
-    }
-
-    
-
     const handleEdit = () => {
 
     }
