@@ -1,8 +1,10 @@
 // frontend/src/store/session.js
 import { csrfFetch } from './csrf';
+
 const GET_SPOT = "spots/getspot"
 const DELETE_SPOT = "spots/deleteSpot"
 const EDIT_SPOT = "spots/editSpot"
+
 
 const ADD_REVIEW = "spots/addReview"
 const DELETE_REVIEW = "reviews/deleteReview"
@@ -136,19 +138,31 @@ const spotByIdReducer = (state = initialState, action) => {
       newState = action.spot
       return newState;
     case DELETE_SPOT:
+      newState = { ...state}
       delete newState[action.id]
-      return newState;
+       return 
     case EDIT_SPOT:
       newState = { ...state }
       newState[action.spot.id] = action.spot
       return newState;
     case ADD_REVIEW:
       newState = { ...state }
-      newState[action.review.newReview.id] = action.review.newReview
+      let reviewObj = {}
+      newState.Reviews.forEach(review =>{
+        reviewObj[review.id] = review
+      })
+      reviewObj[action.review.newReview.id] = action.review.newReview
+      newState.Reviews = Object.values(reviewObj)
       return newState
       case DELETE_REVIEW:
-        delete newState[action.id]
-        return newState;
+        const deleteObj = {}
+        newState = { ...state }
+        newState.Reviews.forEach(review =>{
+          deleteObj[review.id] = review
+      })
+      delete deleteObj[action.id]
+      newState.Reviews = Object.values(deleteObj)
+      return newState
     default:
       return state;
   }

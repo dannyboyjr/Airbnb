@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import {loadSpotById} from '../../store/spotByIdStore'
-import {deleteSpotById} from '../../store/spotByIdStore'
+import {deleteASpotById} from '../../store/spots'
 import { useHistory } from 'react-router-dom';
 import SpotImages from '../Spot/SpotImages/SpotImages'
 
@@ -24,8 +24,9 @@ const Spot = ({id}) => {
     },[dispatch])
 
     const handleDelete = () => {
-        dispatch(deleteSpotById(id))
+        dispatch(deleteASpotById(id))
         history.push(`/`);
+        
     }
 
     const handleEdit = () => {

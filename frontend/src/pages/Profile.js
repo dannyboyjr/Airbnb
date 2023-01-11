@@ -1,5 +1,5 @@
 import MyListings from "../components/MyListings/MyListings"
-
+import MyReviewList from '../components/MyReviews/MyReviewList/MyReviewList'
 
 const Profile = () => {
 
@@ -13,6 +13,10 @@ const Profile = () => {
             <div>
                 <h3>My Listings</h3>
                  <MyListings />
+            </div>
+            <div>
+                <h3>My reviews</h3>
+                 <MyReviewList />
             </div>
             
         </div>
