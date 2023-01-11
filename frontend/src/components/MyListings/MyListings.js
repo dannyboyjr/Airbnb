@@ -2,12 +2,12 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { loadAllSpots } from '../../store/spots';
-import SpotCard from '../Spot/SpotCard/SpotCard'
+import SpotCard from './SpotCard/SpotCard'
 
 
 
 const MyListings = () => {
-    const [isLoaded, setIsLoaded ] = useState(false)
+    const [isLoaded, setIsLoaded] = useState(false)
     const dispatch = useDispatch()
     const spotObj = useSelector(state => state.spots)
     const spotArray = Object.values(spotObj)
@@ -16,22 +16,21 @@ const MyListings = () => {
     const userSpots = spotArray.filter(spot => spot.userId == sessionUser.id)
 
 
-    useEffect(()=>{
+    useEffect(() => {
 
-        dispatch(loadAllSpots()).then(()=> setIsLoaded(true))
-        
-    },[dispatch])
+        dispatch(loadAllSpots()).then(() => setIsLoaded(true))
+
+    }, [dispatch])
 
     return (
-        <>
-        <div>SpotList</div>
-        {isLoaded && 
-        userSpots.map(spot => (
-            <SpotCard key ={spot.id} spot={spot}/>
-        ))
-    }
-        
-        </>
+        <div>
+            {isLoaded &&
+                userSpots.map(spot => (
+                    <SpotCard key={spot.id} spot={spot} />
+                ))
+            }
+
+        </div>
     )
 }
 

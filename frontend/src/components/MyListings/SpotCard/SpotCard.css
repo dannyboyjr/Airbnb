@@ -1,11 +1,14 @@
 
 .spotCard{
-    border: 1px solid;
+
     margin: 10px;
-    width: 180px;
-    height: 200px;
+    width: 280px;
+    height: 365px;
     border-radius: 6%;
 
+}
+.spotCard:hover {
+    box-shadow: 2px 2px 5px #888;
 }
 
 .locationAndStars{

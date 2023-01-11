@@ -1,15 +1,17 @@
 import './SpotCard.css'
 import { Link } from "react-router-dom";
+import ThumbNailImage from '../ThumbNailImage/ThumbNailImage';
+
 
 const SpotCard = ({spot}) => {
-    console.log(spot)
+    
+    let spotImageArray = spot.SpotImages
 
     return(
         <Link className="link" to={`/spots/${spot.id}`}>
         <div className='spotCard'>
             
-
-            {spot.previewImage}<p>image</p>
+            <ThumbNailImage images={spotImageArray} />
         {spot.name}
            <div className='locationAndStars'>
                 {spot.city},{spot.state} 

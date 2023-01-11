@@ -17,7 +17,7 @@ input {
     box-sizing: broder-box;
 }
 
-form button {
+/* form button {
     background: #FF5A5F;
     border: 0;
     color: #fff;
@@ -25,7 +25,7 @@ form button {
     border-radius: 4px;
     cursor: pointer;
     
-}
+} */
 
 div.error {
     padding: 10px;

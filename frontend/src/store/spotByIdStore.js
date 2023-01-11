@@ -62,7 +62,7 @@ export const deleteSpotById = (id) => async (dispatch) => {
 
   if (response.ok) {
     const data = await response.json();
-    console.log(data)
+   
     dispatch(deleteSpot(id))
   }
 }
@@ -89,6 +89,8 @@ export const addReview = (review, id) => async (dispatch) => {
 
   if (response.ok) {
     const review = await response.json();
+    console.log("TESTESTESTES FROM STORE SPOTBYID ADDREVIEW: ")
+    console.log(review)
     dispatch(reviewAdd(review))
   }
 
@@ -142,7 +144,8 @@ const spotByIdReducer = (state = initialState, action) => {
       return newState;
     case ADD_REVIEW:
       newState = { ...state }
-      newState[action.spot.id] = action.spot
+      newState[action.review.newReview.id] = action.review.newReview
+      return newState
       case DELETE_REVIEW:
         delete newState[action.id]
         return newState;

@@ -1,12 +1,15 @@
 import './CreateSpotForm.css'
 import { useEffect, useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { createSpot } from '../../store/spots'
+
 
 const CreateSpotForm = ({spot}) => {
         
     const dispatch = useDispatch()
     const sessionUser = useSelector(state => state.session.user);
+    const history = useHistory()
 
         const[name, setName] = useState(spot.name)
         const[description, setDiscription] = useState(spot.description)
@@ -58,7 +61,7 @@ const CreateSpotForm = ({spot}) => {
             }
             )
 
-            
+            history.push("/")
         }
 
   

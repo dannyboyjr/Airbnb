@@ -8,26 +8,30 @@ import { useParams } from 'react-router-dom';
 
 const EditReviewPage = () => {
     const { id } = useParams();
-    const dispatch = useDispatch()
-    const spotById = useSelector(state => state.spotById)
     const [isLoaded, setIsLoaded ] = useState(false)
+    const spotbyId = useSelector(state => state.spotById.Reviews)
+    let sessionUser = useSelector(state => state.session.user);
+    const dispatch = useDispatch()
+    let review = spotbyId.filter(review => sessionUser.id === review.userId)
+    console.log(...review)
     
     useEffect(()=>{
 
-        dispatch(loadSpotById(id)).then(()=> setIsLoaded(true))
+        dispatch(loadSpotById(1)).then(()=> setIsLoaded(true))
     },[dispatch])
     
 
     return (
         <div>
             <h1>Edit Review</h1>
-            {isLoaded &&
-            <EditReview spot={spotById} id={id}/>
-}
+            {isLoaded && 
+            <EditReview review={review[0]} />
+            }
         </div>
+     
         )
 }
 
 
 
-export default EditSpotPage
+export default EditReviewPage

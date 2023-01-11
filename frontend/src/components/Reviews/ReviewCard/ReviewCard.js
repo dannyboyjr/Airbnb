@@ -1,18 +1,22 @@
 import './ReviewCard.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { deleteReview } from '../../../store/spotByIdStore'
+import { useHistory } from 'react-router-dom';
+
 
 const ReviewCard = ({review}) => {
     let sessionUser = useSelector(state => state.session.user);
     let dispatch = useDispatch()
+    const history = useHistory();
 
 
-    const handleEdit = () => {
-
+    const handleEdit = (e) => {
+        e.preventDefault()
+        history.push(`/reviews/${review.id}`);
     }
 
-    const handleDelete = () => {
-        console.log(review)
+    const handleDelete = (e) => {
+        e.preventDefault()
         dispatch(deleteReview(review.id))
 
     }

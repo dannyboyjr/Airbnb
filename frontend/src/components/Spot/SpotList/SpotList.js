@@ -2,7 +2,7 @@ import './SpotList.css'
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { loadAllSpots } from '../../../store/spots';
-import SpotCard from '../SpotCard/SpotCard'
+import SpotCard from '../../MyListings/SpotCard/SpotCard'
 
 
 const SpotList = () => {
@@ -20,7 +20,6 @@ const SpotList = () => {
 
     return (
         <>
-        <div>SpotList</div>
         <div className='spots'>
         {isLoaded && 
         spotArray.map(spot => (

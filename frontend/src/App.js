@@ -6,12 +6,12 @@ import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
-// import SpotList from "./components/SpotList/SpotList";
 import Home from './pages/Home'
 import Profile from "./pages/Profile";
 import CreateSpotPage from "./pages/CreateSpotPage";
 import EditSpotPage from "./pages/EditSpotPage";
 import SpotPage from "./pages/SpotPage";
+import EditReviewPage from "./pages/EditReviewPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -43,6 +43,9 @@ function App() {
           </Route>
           <Route exact path="/spots/:id/edit">
             <EditSpotPage />
+          </Route>
+          <Route exact path="/reviews/:id/">
+            <EditReviewPage />
           </Route>
           <Route  path="/">
             <Home />

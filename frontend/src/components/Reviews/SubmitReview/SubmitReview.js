@@ -40,8 +40,7 @@ const SubmitReview = ({id}) => {
       <div className="star-rating">
               <form onSubmit={handleSubmit}>
         <label>
-          Text Input:
-          <input type="text" value={reviewText} onChange={e => setReviewText(e.target.value)} />
+          <input type="text" placeholder='add your review' value={reviewText} onChange={e => setReviewText(e.target.value)} />
         </label>
 
         {[...Array(5)].map((star, index) => {

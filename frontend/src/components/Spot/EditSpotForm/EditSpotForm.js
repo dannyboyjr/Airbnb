@@ -2,13 +2,13 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import {editSpot} from '../../../store/spotByIdStore'
+import { useHistory } from 'react-router-dom'
 
 const EditSpotForm = ({spot, id}) => {
 
-
-        
     const dispatch = useDispatch()
     const sessionUser = useSelector(state => state.session.user);
+    const history = useHistory()
 
         const[name, setName] = useState(spot.name)
         const[description, setDiscription] = useState(spot.description)
@@ -49,7 +49,7 @@ const EditSpotForm = ({spot, id}) => {
             }
             )
 
-            
+            history.push(`/spots/${id}`)
         }
 
   
