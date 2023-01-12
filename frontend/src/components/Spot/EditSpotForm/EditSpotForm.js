@@ -121,8 +121,6 @@ const EditSpotForm = ({spot, id}) => {
 
             />  
 
-            <label>Add Photos Section</label>
-
             <button>Edit Listing</button>
 
             {error.length > 0 && 

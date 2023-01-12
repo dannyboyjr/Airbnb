@@ -129,8 +129,6 @@ const CreateSpotForm = ({spot}) => {
                 value={price}
             />  
 
-            <label>Add Photos Section</label>
-
             <button>Add Listing</button>
 
             {error.length > 0 && 
