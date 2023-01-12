@@ -19,7 +19,6 @@ const EditReview = ({review}) => {
     const [reviewText, setReviewText] = useState(review.review)
     const [errors, setErrors] = useState([])
 
-  console.log(review)
     const handleEdit = () => {
 
       if(!reviewText.length > 250 || !reviewText.length < 1 || !rating < 0){

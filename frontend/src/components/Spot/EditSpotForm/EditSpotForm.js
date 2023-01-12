@@ -47,7 +47,6 @@ const EditSpotForm = ({spot, id}) => {
                 history.push(`/spots/${id}`)
             }).catch( async response => {
                 const data = await response.json()
-                console.log(data)
                 if (data.errors)setError(data.errors)
 
             })

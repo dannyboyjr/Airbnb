@@ -33,7 +33,6 @@ export const deleteMyReview = (id) => async (dispatch) => {
 
   if (response.ok) {
     const data = await response.json();
-    console.log(data)
     dispatch(reviewADelete(id))
   }
 }
@@ -47,14 +46,12 @@ const reviewsReducer = (state = initialState, action) => {
   switch (action.type) {
 	case LOAD_REVIEWS:
     newState = {...state}
-    console.log(action)
     action.reviews.forEach(review =>{
     newState[review.id] = review
     });
     return newState;
     case DELETE_A_REVIEW:
         newState = { ...state }
-        console.log(newState)
       delete newState[action.id]
       return newState
     default:

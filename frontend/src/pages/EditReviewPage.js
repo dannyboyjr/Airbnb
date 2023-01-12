@@ -13,7 +13,6 @@ const EditReviewPage = () => {
     let sessionUser = useSelector(state => state.session.user);
     const dispatch = useDispatch()
     let review = spotbyId.filter(review => sessionUser.id === review.userId)
-    console.log(...review)
     
     useEffect(()=>{
 

@@ -57,7 +57,6 @@ const CreateSpotForm = ({spot}) => {
                  history.push("/")
             }).catch( async response => {
                 const data = await response.json()
-                console.log(data)
                 if (data.errors)setError(data.errors)
 
             })

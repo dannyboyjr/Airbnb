@@ -30,7 +30,6 @@ function SignupFormPage({}) {
         username, 
         password
       }
-      console.log(userSignupObj)
       return dispatch(sessionActions.signup(userSignupObj))
         .catch(async (res) => {
           const data = await res.json();
