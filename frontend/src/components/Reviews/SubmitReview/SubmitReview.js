@@ -11,8 +11,8 @@ const SubmitReview = ({id}) => {
 
     const dispatch = useDispatch()
     const sessionUser = useSelector(state => state.session.user);
-
-
+    const spotById = useSelector(state => state.spotById);
+    let userOwnsSpot = false
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -20,7 +20,21 @@ const SubmitReview = ({id}) => {
             return
         }
 
-        if(!reviewText.length > 250 || !reviewText.length < 1 || !rating < 0){
+        setErrors([])
+
+        let userAlreadyPosted = spotById.Reviews.filter(review => review.userId === sessionUser.id)
+        if(spotById.userId == sessionUser.id){
+           userOwnsSpot = true
+        }
+
+
+        if(reviewText.length < 1 || rating === 0) {
+          setErrors(['Review text must 1 to 250 charaters', "Star rating must be 1 - 5"])
+        }else if(userAlreadyPosted.length > 0) {
+          setErrors([ 'Cannot post multiple reviews!'])
+        }else if(userOwnsSpot) {
+          setErrors([ 'Cannot own Spot!!'])
+        }else {
           setErrors([])
         let review = {
             review:reviewText,
@@ -33,8 +47,6 @@ const SubmitReview = ({id}) => {
             setHover(0)
 
         })
-      }else{
-        setErrors(['Review text must 1 to 250 charaters', "Star rating must be 1 - 5"])
       }
     }
 

@@ -17,7 +17,6 @@ const Spot = ({id}) => {
 
 
 
-
     useEffect(()=>{
 
         dispatch(loadSpotById(id)).then(()=> setIsLoaded(true))

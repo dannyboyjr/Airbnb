@@ -57,7 +57,6 @@ const CreateSpotForm = ({spot}) => {
                  history.push("/")
             }).catch( async response => {
                 const data = await response.json()
-                console.log("THIS IS THE DATA")
                 console.log(data)
                 if (data.errors)setError(data.errors)
 
@@ -69,14 +68,6 @@ const CreateSpotForm = ({spot}) => {
 
     return sessionUser.id ? (
         <form className='create' onSubmit={handleSubmit}>
-
-            {error.length > 0 && 
-            <ul>
-            {error.map((e, i ) => (
-                <li key={i}>{e}</li>
-            ))}
-            </ul>
-            }
 
             <label>Name:</label>
             <input
@@ -133,6 +124,7 @@ const CreateSpotForm = ({spot}) => {
             <label>Price</label>
             <input
                 type="number"
+                min={0}
                 onChange={(e) => setPrice(e.target.value)}
                 value={price}
             />  
@@ -140,6 +132,14 @@ const CreateSpotForm = ({spot}) => {
             <label>Add Photos Section</label>
 
             <button>Add Listing</button>
+
+            {error.length > 0 && 
+            <ul>
+            {error.map((e, i ) => (
+                <li key={i}>{e}</li>
+            ))}
+            </ul>
+            }
 
         </form>
     ) : null

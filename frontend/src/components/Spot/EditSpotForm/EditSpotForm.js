@@ -19,8 +19,7 @@ const EditSpotForm = ({spot, id}) => {
         const[lat, setLat] = useState(spot.lat)
         const[lng, setLng] = useState(spot.lng)
         const[price, setPrice] = useState(spot.price)
-        const[error, setError] = useState(null)
-        const[emptyFields, setEmptyFields] = useState([])
+        const[error, setError] = useState([])
 
         const handleSubmit = async (e) => {
             e.preventDefault()
@@ -44,12 +43,16 @@ const EditSpotForm = ({spot, id}) => {
                 setLat("")
                 setLng("")
                 setPrice("")
-                setError(null)
-                setEmptyFields([])
-            }
-            )
+                setError([])
+                history.push(`/spots/${id}`)
+            }).catch( async response => {
+                const data = await response.json()
+                console.log(data)
+                if (data.errors)setError(data.errors)
 
-            history.push(`/spots/${id}`)
+            })
+
+       
         }
 
   
@@ -62,7 +65,6 @@ const EditSpotForm = ({spot, id}) => {
                 type="text"
                 onChange={(e) => setName(e.target.value)}
                 value={name}
-                className={emptyFields.includes("name") ? 'error' : ''}
             />
 
             <label>description: </label>
@@ -70,7 +72,6 @@ const EditSpotForm = ({spot, id}) => {
                 type="text"
                 onChange={(e) => setDiscription(e.target.value)}
                 value={description}
-                className={emptyFields.includes("description") ? 'error' : ''}
             />
 
             <label>Address</label>
@@ -78,7 +79,6 @@ const EditSpotForm = ({spot, id}) => {
                 type="text"
                 onChange={(e) => setAddress(e.target.value)}
                 value={address}
-                className={emptyFields.includes("address") ? 'error' : ''}
             /> 
 
             <label>City</label>
@@ -86,7 +86,6 @@ const EditSpotForm = ({spot, id}) => {
                 type="text"
                 onChange={(e) => setCity(e.target.value)}
                 value={city}
-                className={emptyFields.includes("city") ? 'error' : ''}
             />  
 
             <label>State</label>
@@ -94,41 +93,46 @@ const EditSpotForm = ({spot, id}) => {
                 type="text"
                 onChange={(e) => setState(e.target.value)}
                 value={state}
-                className={emptyFields.includes("state") ? 'error' : ''}
             />  
             <label>country</label>
             <input
                 type="text"
                 onChange={(e) => setCountry(e.target.value)}
                 value={country}
-                className={emptyFields.includes("country") ? 'error' : ''}
             />  
             <label>latitude</label>
             <input
                 type="number"
                 onChange={(e) => setLat(e.target.value)}
                 value={lat}
-                className={emptyFields.includes("latitude") ? 'error' : ''}
             />  
             <label>longitude</label>
             <input
                 type="number"
                 onChange={(e) => setLng(e.target.value)}
                 value={lng}
-                className={emptyFields.includes("") ? 'error' : ''}
             />  
             <label>Price</label>
             <input
                 type="number"
+                min="0"
                 onChange={(e) => setPrice(e.target.value)}
                 value={price}
-                className={emptyFields.includes("price") ? 'error' : ''}
+
             />  
 
             <label>Add Photos Section</label>
 
             <button>Edit Listing</button>
-            {error && <div className="error">{error}</div>}
+
+            {error.length > 0 && 
+            <ul>
+            {error.map((e, i ) => (
+                <li key={i}>{e}</li>
+            ))}
+            </ul>
+            }
+
 
         </form>
     ) : null

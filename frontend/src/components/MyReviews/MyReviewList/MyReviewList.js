@@ -12,16 +12,15 @@ const MyReviewList = () => {
     const dispatch = useDispatch()
     const myReviews = useSelector(state => state.myReviews)
     const myReviewsArray = Object.values(myReviews)
-    let sessionUser = useSelector(state => state.session.user);
 
     useEffect(()=>{
         dispatch(loadAllReviews()).then(()=> setIsLoaded(true))
     },[dispatch])
-console.log(myReviews)
+
     return(
-        <div className='myReviewList'>
-            {isLoaded && myReviewsArray.map(review =>(
-                <MyReviewCard review={review} />
+        <div className='myReviewSection'>
+            {isLoaded && myReviewsArray.map((review, i) =>(
+                <MyReviewCard key={i} review={review} />
             )) }
             
         </div>

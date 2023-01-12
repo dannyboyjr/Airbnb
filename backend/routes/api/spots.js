@@ -105,31 +105,30 @@ router.get("/", queryValidator, async (req, res) => {
 
 
 const spotChecker = [
+    check("name")
+        .isByteLength({ min: 1, max: 49 })
+        .withMessage("Name is required"),
+    check("description")
+        .isByteLength({ min:1, max: 2000})
+        .withMessage("Description is required"),
     check('address')
         .exists({ checkFalsy: true })
         .withMessage('Street address is required'),
     check('city')
         .exists({ checkFalsy: true })
-        .isString()
-        .withMessage('City is required. Must be a string'),
+        .withMessage('City is required'),
     check('state')
         .exists({ checkFalsy: true })
-        .isString()
-        .withMessage('State is required. Must be a string'),
+        .withMessage('State is required'),
     check('country')
         .exists({ checkFalsy: true })
-        .isString()
-        .withMessage('Country is required. Must be a string'),
+        .withMessage('Country is required'),
     check('lat')
         .isDecimal()
         .withMessage('Latitude is not valid'),
     check('lng')
         .isDecimal()
         .withMessage(' longitude is invalid'),
-    check("name")
-        .exists({ checkFalsy: true })
-        .isByteLength({ min: 0, max: 49 })
-        .withMessage("Name must be less than 50 characters"),
     check('price')
         .isDecimal({ min: 0 })
         .withMessage('Minimum price must be greater than or equal to 0'),
@@ -391,12 +390,10 @@ router.get("/:spotId/reviews", async (req, res, next) => {
 
 
 const createReviewValidator = [
+
     check("review")
         .exists({ checkFalsy: true })
-        .isString()
-        .withMessage("Review text(string) is required"),
-    check("review")
-        .isByteLength({ min: 0, max: 200 })
+        .isByteLength({ min: 0, max: 1000 })
         .withMessage("Review text must be a string under 200 charaters"),
     check("stars")
         .isInt({ min: 1, max: 5 })
@@ -427,7 +424,7 @@ router.post("/:spotId/reviews", requireAuth, createReviewValidator, async (req, 
         return next(err);
     }
 
-    //error if upser already posted review to spot
+    //error if user already posted review to spot
     const reviewAlreadyExists = await Review.findOne({
         where: {
             userId: userId,

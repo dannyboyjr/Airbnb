@@ -8,12 +8,11 @@ import SubmitReview from './SubmitReview/SubmitReview';
 
 const Reviews = ({id}) => {
     const [isLoaded, setIsLoaded ] = useState(false)
-    const spotReviews = useSelector(state => state.spotById.Reviews)
+    const [userOwnsSpot, setUserOwnsSpot] = useState(false)
+    const spotById = useSelector(state => state.spotById)
     const dispatch = useDispatch()
 
-
-useEffect(()=>{
-
+    useEffect(()=>{
     dispatch(loadSpotById(id)).then(()=> setIsLoaded(true))
 },[dispatch])
 
@@ -21,9 +20,10 @@ useEffect(()=>{
     return (
             <div className='reviewSection'>
             <h1>Reviews</h1>
-        <SubmitReview id={id}/>
+          { !userOwnsSpot && <SubmitReview id={id}/> }
+        
     {isLoaded && 
-    spotReviews.map((review, index) =>(
+    spotById.Reviews.map((review, index) =>(
         <ReviewCard key={index} review={review} />
     ))}
 

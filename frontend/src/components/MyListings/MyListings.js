@@ -23,7 +23,7 @@ const MyListings = () => {
     }, [dispatch])
 
     return (
-        <div>
+        <div className='spots'>
             {isLoaded &&
                 userSpots.map(spot => (
                     <SpotCard key={spot.id} spot={spot} />

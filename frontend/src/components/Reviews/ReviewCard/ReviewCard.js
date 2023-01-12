@@ -33,7 +33,7 @@ const ReviewCard = ({review}) => {
            <p className="createDateReview">{formateDistanceToNow(new Date(review.createdAt), {addSuffix: false})}</p>
            </div>
            {review.userId === sessionUser.id && 
-               <div>
+               <div className='reviewBtns'>
                <button className='reviewBtns' onClick={handleEdit}>edit</button>
                 <button  className='reviewBtns' onClick={handleDelete}>delete</button>
                 </div>

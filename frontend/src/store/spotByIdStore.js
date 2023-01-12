@@ -63,7 +63,6 @@ export const deleteSpotById = (id) => async (dispatch) => {
   });
 
   if (response.ok) {
-    const data = await response.json();
    
     dispatch(deleteSpot(id))
   }
@@ -91,13 +90,17 @@ export const addReview = (review, id) => async (dispatch) => {
 
   if (response.ok) {
     const review = await response.json();
+    
     return dispatch(reviewAdd(review))
   }
   console.log("ADDREVIEW RESPONSE")
   console.log(response)
+
   return response
 
 }
+
+
 
 export const deleteReview = (id) => async (dispatch) => {
   const response = await csrfFetch(`/api/reviews/${id}`, {

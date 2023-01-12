@@ -19,7 +19,7 @@ const EditReview = ({review}) => {
     const [reviewText, setReviewText] = useState(review.review)
     const [errors, setErrors] = useState([])
 
-
+  console.log(review)
     const handleEdit = () => {
 
       if(!reviewText.length > 250 || !reviewText.length < 1 || !rating < 0){
@@ -34,11 +34,6 @@ const EditReview = ({review}) => {
     }else{
       setErrors(['Review text must 1 to 250 charaters', "Star rating must be 1 - 5"])
     }
-
-    }
-
-    const handleDelete = () => {
-        dispatch(deleteReview(review.id))
 
     }
 
@@ -83,7 +78,6 @@ const EditReview = ({review}) => {
            {review.userId === sessionUser.id && 
                <div>
                <button onClick={handleEdit}>save</button>
-                <button onClick={handleDelete}>delete</button>
                 </div>
                 }
 
