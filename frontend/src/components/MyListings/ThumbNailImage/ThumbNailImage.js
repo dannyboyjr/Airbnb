@@ -11,7 +11,7 @@ const ThumbNailImage = ({images}) => {
         const checkImage = async (url) => {
           try {
             const res = await fetch(images[0].url, { method: "HEAD" });
-            SetValidImg(res.ok);
+            SetValidImg(true);
             setImg(images[0].url)
           } catch (error) {
             SetValidImg(false);
@@ -25,7 +25,7 @@ const ThumbNailImage = ({images}) => {
         <div>
             
             {validImg && <img className='thumbImage' src={img} alt="something went wrong"/>}
-            {!validImg && <img className='thumbImage' src={noImg} alt="something went wrong"/>}
+            {!validImg && <img className='NoImage' src={noImg} alt="something went wrong"/>}
        </div>
     )
 }

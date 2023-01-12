@@ -5,3 +5,10 @@
     border-radius: 10px;
 
 }
+
+.NoImage{
+    display: flex;
+    margin-left: 33px;
+    max-width: 215px;
+    border-radius: 10px;
+}

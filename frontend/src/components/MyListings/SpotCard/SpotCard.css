@@ -1,16 +1,30 @@
 
 .spotCard{
-
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between
+;   
     margin: 10px;
     width: 280px;
-    height: 365px;
+    height: 335px;
     border-radius: 6%;
 
 }
 .spotCard:hover {
     box-shadow: 2px 2px 5px #888;
 }
+.elementsBelowPic{
+margin: 15px;
+}
 
+.spotCardName{
+    display: flex;
+    flex-direction: row;
+    margin-left: 0px;
+    justify-content: space-between;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
 .locationAndStars{
     display: flex;
     flex-direction: row;
@@ -21,4 +35,8 @@
     text-decoration: none; 
     color: black;
 
+}
+
+.spotCardPrice{
+    font-weight: 600;
 }
