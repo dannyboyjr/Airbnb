@@ -19,19 +19,15 @@ useEffect(()=>{
 
 
     return (
-        <div className="reviewCard">
-        <h1>Reviews</h1>
+            <div className='reviewSection'>
+            <h1>Reviews</h1>
         <SubmitReview id={id}/>
-
     {isLoaded && 
-
     spotReviews.map((review, index) =>(
-            <ReviewCard key={index} review={review} />
-    ))
+        <ReviewCard key={index} review={review} />
+    ))}
 
-    }
-        
-        </div>
+    </div>
     )
 }
 

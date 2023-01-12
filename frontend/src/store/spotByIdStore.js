@@ -91,10 +91,11 @@ export const addReview = (review, id) => async (dispatch) => {
 
   if (response.ok) {
     const review = await response.json();
-    console.log("TESTESTESTES FROM STORE SPOTBYID ADDREVIEW: ")
-    console.log(review)
-    dispatch(reviewAdd(review))
+    return dispatch(reviewAdd(review))
   }
+  console.log("ADDREVIEW RESPONSE")
+  console.log(response)
+  return response
 
 }
 

@@ -11,8 +11,17 @@ function Navigation({ isLoaded }){
   if (sessionUser.id) {
     sessionLinks = (
       <div className='sessionButtons'>
+        <div className='navButtons'>
+          <div>
         <NavLink exact to="/create">Create Listings</NavLink>
+        </div>
+        <div>
+        <NavLink exact to="/profile">profile</NavLink>
+        </div>
+        <div>
       <ProfileButton user={sessionUser} />
+      </div>
+      </div>
       </div>
     );
   } else {

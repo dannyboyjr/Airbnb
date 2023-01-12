@@ -2,6 +2,7 @@ import './ReviewCard.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { deleteReview } from '../../../store/spotByIdStore'
 import { useHistory } from 'react-router-dom';
+import formateDistanceToNow from 'date-fns/formatDistanceToNow';
 
 
 const ReviewCard = ({review}) => {
@@ -21,18 +22,20 @@ const ReviewCard = ({review}) => {
 
     }
 
-
     return (
         <div className='reviewCard'>
+            <div className='reviewText'>
              {review.review}
-            <div>
-            Stars: {review.stars}
-            </div>
-           Date:  {review.createdAt}
+             </div>
+            <div className='reviewStarsAndDate'>
+            stars: {review.stars}
+            
+           <p className="createDateReview">{formateDistanceToNow(new Date(review.createdAt), {addSuffix: false})}</p>
+           </div>
            {review.userId === sessionUser.id && 
                <div>
-               <button onClick={handleEdit}>edit</button>
-                <button onClick={handleDelete}>delete</button>
+               <button className='reviewBtns' onClick={handleEdit}>edit</button>
+                <button  className='reviewBtns' onClick={handleDelete}>delete</button>
                 </div>
                 }
         </div>

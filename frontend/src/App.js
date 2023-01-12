@@ -6,6 +6,7 @@ import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
+import Footer from "./components/Footer/Footer";
 import Home from './pages/Home'
 import Profile from "./pages/Profile";
 import CreateSpotPage from "./pages/CreateSpotPage";
@@ -52,6 +53,7 @@ function App() {
           </Route>
         </Switch>
       )}
+      <Footer />
     </>
   );
 }

@@ -1,37 +1,57 @@
 
 import { useDispatch, useSelector } from 'react-redux'
-import {useState, useEffect} from 'react'
+import {useState} from 'react'
 import { deleteReview, editAReview } from '../../../store/spotByIdStore';
+import { useHistory } from 'react-router-dom';
+
+
 
 const EditReview = ({review}) => {
     let sessionUser = useSelector(state => state.session.user);
     let dispatch = useDispatch()
+    const history = useHistory();
+
+    
 
     //for stars
     const [rating, setRating] = useState(review.stars);
     const [hover, setHover] = useState(0);
     const [reviewText, setReviewText] = useState(review.review)
+    const [errors, setErrors] = useState([])
 
 
     const handleEdit = () => {
 
+      if(!reviewText.length > 250 || !reviewText.length < 1 || !rating < 0){
       const editedReview = {
         review:reviewText,
         stars:rating
       }
-      console.log(editedReview)
-      dispatch(editAReview(editedReview, review.id))
+
+      dispatch(editAReview(editedReview, review.id)).then(()=>{
+        history.goBack();
+    })
+    }else{
+      setErrors(['Review text must 1 to 250 charaters', "Star rating must be 1 - 5"])
+    }
 
     }
 
     const handleDelete = () => {
-        console.log(review)
         dispatch(deleteReview(review.id))
 
     }
 
     return (
+
         <div className='reviewCard'>
+          {errors.length > 0 && 
+            <ul>
+            {errors.map((e, i ) => (
+                <li key={i}>{e}</li>
+            ))}
+            </ul>
+            }
              <label>
                 <input
                 value={reviewText} 
@@ -67,24 +87,7 @@ const EditReview = ({review}) => {
                 </div>
                 }
 
-
-
-
-
-
-
-
-
-
-
-
-
         </div>
-
-
-
-
-
 
     )
 }
