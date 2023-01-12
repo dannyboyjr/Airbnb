@@ -61,7 +61,46 @@ module.exports = {
       description: "2 bed 1 Bath right on Mami Beach! Amazing location",
       price: 300.00,
       previewImage: null
-  }
+  },
+  {
+    userId: 1,
+    address: "234 st",
+    city: "New York",
+    state: "NY",
+    country: "USA",
+    lat: 25.786878780434577,
+    lng: -80.12983134257334,
+    name: "Upper East Village",
+    description: "In the heart of New York. Come try our pizza!",
+    price: 230.00,
+    previewImage: null
+},
+{
+  userId: 2,
+  address: "5 ave",
+  city: "Los Angeles",
+  state: "CA",
+  country: "USA",
+  lat: 25.786878780434577,
+  lng: -80.12983134257334,
+  name: "West Coast Home",
+  description: "4 bed 2 bath amazing location for surfering",
+  price: 500.00,
+  previewImage: null
+},
+{
+  userId: 3,
+  address: "Calle Santo Domingo",
+  city: "Tamarindo",
+  state: "GN",
+  country: "Costa Rica",
+  lat: 25.786878780434577,
+  lng: -80.12983134257334,
+  name: "BeachFront Studio",
+  description: "2 bed 1 bath on beachfront",
+  price: 195.00,
+  previewImage: null
+}
     ], {});
   
   },
