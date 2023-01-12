@@ -1,3 +1,4 @@
+import './Spot.css'
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import {loadSpotById} from '../../store/spotByIdStore'
@@ -37,13 +38,19 @@ const Spot = ({id}) => {
     return(
         <div>
               {isLoaded &&
-            <div>
-                <h1>{spotById.name}</h1>
-            <div >
-               stars {Math.round(spotById.averageStars * 100) / 100} · 
-               {spotById.totalReviews} reviews ·
-               {spotById.totalReviews} · 
-               {spotById.city} {spotById.state} {spotById.country} · 
+            <div className='SpotbyId'>
+                <h1 className="spotByIdName">{spotById.name}</h1>
+            <div className='spotInfo'>
+                <div>
+               stars {Math.round(spotById.averageStars * 100) / 100} ·
+               </div>
+               <div>
+               {spotById.totalReviews} reviews
+               </div> 
+                
+               <div>
+               {spotById.city} {spotById.state} {spotById.country}
+               </div>
                {spotById.userId === sessionUser.id && 
                <div>
                <button onClick={handleEdit}>edit</button>
@@ -52,10 +59,10 @@ const Spot = ({id}) => {
                 }
             </div> 
             <SpotImages spot={spotById}/>
-            <p><span>${spotById.price} a night</span> -  hosted by {spotById.User.firstName} {spotById.User.lastName} </p>
+            <p><span className="priceById">${spotById.price}</span> / night< span className='hostedBy'> hosted by {spotById.User.firstName} {spotById.User.lastName} </span></p>
 
-            <div>
-                <p>Description</p>
+            <div className='descriptionSection'>
+                <span className="priceById"><p>Description</p></span>
             {spotById.description}
             </div>
             </div>

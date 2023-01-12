@@ -1,0 +1,32 @@
+.SpotbyId{
+
+    margin-left: 40px;
+}
+
+.spotByIdName{
+    margin: 5px;
+    margin-top: 20px;
+    padding-left: 15px;
+}
+
+.spotInfo{
+display: flex;
+/* background-color: lightgray; */
+justify-content: flex-start;
+gap: 25px;
+max-width: 550px;
+margin-left: 20px;
+}
+
+.priceById{
+    font-weight: bold;
+    margin-left: 15px;
+}
+.descriptionSection{
+    padding: 14px;
+}
+
+.hostedBy{
+    margin-left: 20px;
+    font-size: .8em;
+}
