@@ -28,8 +28,12 @@ const SubmitReview = ({id}) => {
         }
 
 
-        if(reviewText.length < 1 || rating === 0) {
-          setErrors(['Review text must 1 to 250 charaters', "Star rating must be 1 - 5"])
+        if(reviewText.length < 1 && rating === 0){
+          setErrors(['Review text must be 1 to 1000 charaters', "Star rating must be 1 - 5"])
+        }else if(reviewText.length < 1) {
+          setErrors(['Review text must be 1 to 1000 charaters'])
+        }else if(rating === 0){
+          setErrors(["Star rating must be 1 - 5"])
         }else if(userAlreadyPosted.length > 0) {
           setErrors([ 'Cannot post multiple reviews!'])
         }else if(userOwnsSpot) {

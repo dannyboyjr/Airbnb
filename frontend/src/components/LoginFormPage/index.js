@@ -26,7 +26,19 @@ function LoginFormPage() {
       });
   }
 
+  const loginSeeder = (e)=>{
+    setErrors([]);
+    setCredential("user1@user.io")
+    setPassword('password2')
+    return dispatch(sessionActions.login({credential, password }))
+      // .catch(async (res) => {
+      //   const data = await res.json();
+      //   if (data && data.errors) setErrors(data.errors);
+      // });
+  }
+
   return (
+    <>
     <form onSubmit={handleSubmit}>
       <ul>
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
@@ -50,7 +62,10 @@ function LoginFormPage() {
         />
       </label>
       <button type="submit">Log In</button>
+      <button onClick={loginSeeder}>demo login</button>
     </form>
+   
+    </>
   );
 }
 

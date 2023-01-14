@@ -21,7 +21,7 @@ const EditReview = ({review}) => {
 
     const handleEdit = () => {
 
-      if(!reviewText.length > 250 || !reviewText.length < 1 || !rating < 0){
+      if(!reviewText.length > 1000 || !reviewText.length < 1){
       const editedReview = {
         review:reviewText,
         stars:rating
@@ -31,7 +31,7 @@ const EditReview = ({review}) => {
         history.goBack();
     })
     }else{
-      setErrors(['Review text must 1 to 250 charaters', "Star rating must be 1 - 5"])
+      setErrors(['Review text must be 1 to 1000 charaters'])
     }
 
     }

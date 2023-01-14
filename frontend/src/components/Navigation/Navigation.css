@@ -56,3 +56,10 @@ a {
   list-style-type: none;
   border-radius: 10px;
 }
+
+.loginlogout{
+  display: flex;
+  justify-content: space-evenly;
+  margin-right: 25px;
+  width: 400px;
+}

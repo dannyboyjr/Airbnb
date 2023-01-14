@@ -7,6 +7,7 @@ import { useParams } from 'react-router-dom';
 
 
 const EditReviewPage = () => {
+    
     const { id } = useParams();
     const [isLoaded, setIsLoaded ] = useState(false)
     const spotbyId = useSelector(state => state.spotById.Reviews)
