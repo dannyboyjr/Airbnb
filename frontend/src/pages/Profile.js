@@ -1,4 +1,5 @@
 import MyListings from "../components/MyListings/MyListings"
+import Footer from '../components/Footer/Footer'
 import SpotList from "./Home"
 import Reviews from "../components/Reviews/Reviews"
 import MyReviewList from '../components/MyReviews/MyReviewList/MyReviewList'
@@ -6,7 +7,7 @@ import MyReviewList from '../components/MyReviews/MyReviewList/MyReviewList'
 const Profile = () => {
 
     return (
-        <div>
+        <div className="page-layout-for-footer" >
             <div>
                 <h3>My Listings</h3>
                  <MyListings />
@@ -17,7 +18,7 @@ const Profile = () => {
             <MyReviewList />
             </div>
             </div>
-            
+            <Footer/>
         </div>
     )
 }

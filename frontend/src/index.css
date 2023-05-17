@@ -10,3 +10,22 @@
   .reviewsAndBookings{
     display: flex
   }
+
+  html body {
+    padding: 0;
+    margin: 0;
+    overflow-y: inherit;
+  }
+
+/* CSS for Footer to stay to bottom of screen */
+  .page-layout-for-footer {
+    display: flex;
+    flex-direction: column;
+    min-height: 95vh;
+  }
+  
+  .page-layout-for-footer > div {
+    flex: 1;
+  }
+  /* end CSS for Footer  */
+  

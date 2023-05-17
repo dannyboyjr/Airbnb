@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import Footer from '../Footer/Footer'
 import './LoginForm.css';
 
 function LoginFormPage() {
@@ -38,7 +39,8 @@ function LoginFormPage() {
   }
 
   return (
-    <>
+    <div className="page-layout-for-footer">
+      <div>
     <form onSubmit={handleSubmit}>
       <ul>
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
@@ -64,8 +66,9 @@ function LoginFormPage() {
       <button type="submit">Log In</button>
       <button onClick={loginSeeder}>demo login</button>
     </form>
-   
-    </>
+    </div>
+    <Footer />
+    </div>
   );
 }
 
