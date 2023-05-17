@@ -1,3 +1,4 @@
+Previous link was https://lightweightairbnbclone.onrender.com/ but now is https://lightweightairbnb.onrender.com/
 <h1>airbnb-clone </h1>
 
 <p>
