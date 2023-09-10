@@ -72,6 +72,7 @@ function LoginFormPage() {
     </div>
     </div>
     </div>
+           <Footer />
     </div>
   );
 }
