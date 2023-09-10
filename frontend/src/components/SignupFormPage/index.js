@@ -42,7 +42,10 @@ function SignupFormPage({}) {
 
   return (
     <div className="page-layout-for-footer">
-    <div>
+    <div className="signup-form-container">
+    <div className='signup-form-wrapper'>
+      <div className='login-form'>
+      <h2>Sign Up</h2>
     <form onSubmit={handleSubmit}>
       <ul>
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
@@ -101,10 +104,11 @@ function SignupFormPage({}) {
           required
         />
       </label>
-      <button type="submit">Sign Up</button>
+      <button className="blue-signup-btn" type="submit">Sign Up</button>
     </form>
     </div>
-        <Footer />
+    </div>
+    </div>
         </div>
   );
 }
