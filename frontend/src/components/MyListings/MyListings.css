@@ -1,2 +1,25 @@
 
+.my-listings-container {
+    margin-top: 45px;
+    
 
+
+}
+
+.my-listings-title {
+    font-size: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+    margin-bottom: 35px;
+
+}
+
+.spots {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 330px)); /* Replace 250px with your card's minimum width */
+    gap: 2rem;
+    justify-content: center;
+    width: 100%;
+    
+  }

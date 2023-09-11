@@ -5,9 +5,8 @@
     margin-bottom: 50px;
   }
   
-  .spots {
+  .all-spots-layout {
     display: grid;
-
     grid-template-columns: repeat(auto-fit, minmax(100px, 330px)); /* Replace 250px with your card's minimum width */
     gap: 2rem;
     justify-content: center;

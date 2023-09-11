@@ -23,7 +23,7 @@ module.exports = {
           name: "Ski In Ski Out",
           description:
             "Perfect for skiing enthusiasts visiting Utah, located just 10 minutes away from 4 world-class ski resorts.",
-          price: 499.55,
+          price: 325.0,
           previewImage: null,
         },
         {
@@ -36,7 +36,7 @@ module.exports = {
           lng: -121.952803,
           name: "Pebble Beach Getaway",
           description: "Experience the beauty of Pebble Beach with golf, scenic drives, and relaxation.",
-          price: 235.27,
+          price: 435.27,
           previewImage: null
         },         
         {
@@ -49,7 +49,7 @@ module.exports = {
           lng: -11.83150691469338,
           name: "Malibu Beach Retreat",
           description: "Enjoy the beach, drinks, and good times in beautiful Malibu.",
-          price: 1200.55,
+          price: 800.55,
           previewImage: null
         },
         {
@@ -62,7 +62,7 @@ module.exports = {
           lng: -80.12983134257334,
           name: "Miami Beach",
           description: "2 bed 1 Bath right on Mami Beach! Amazing location",
-          price: 300.0,
+          price: 200.0,
           previewImage: null,
         },
         {
@@ -75,7 +75,7 @@ module.exports = {
           lng: -80.12983134257334,
           name: "Luxury Hamptons Getaway",
           description: "Experience luxury in the heart of The Hamptons. Book your stay now!",
-          price: 230.0,
+          price: 430.0,
           previewImage: null
         },
         {
@@ -88,7 +88,7 @@ module.exports = {
           lng: -117.0543,
           name: "Rosarito Beach House",
           description: "Escape to paradise! Enjoy breathtaking ocean views in this cozy beachfront house in Rosarito.",
-          price: 350.0,
+          price: 150.0,
           previewImage: null
         },
         {
@@ -99,7 +99,7 @@ module.exports = {
           country: "Costa Rica",
           lat: 25.786878780434577,
           lng: -80.12983134257334,
-          name: "BeachFront Studio",
+          name: "BeachFront House",
           description: "2 bed 1 bath on beachfront",
           price: 195.0,
           previewImage: null,
@@ -114,7 +114,7 @@ module.exports = {
           lng: 103.8351,
           name: "Singapore City View Apartment",
           description: "Modern and spacious apartment with a stunning views.",
-          price: 220.0,
+          price: 110.0,
           previewImage: null
         },
         {
@@ -128,7 +128,7 @@ module.exports = {
           name: "Romantic Paris Getaway",
           description:
             "A cozy apartment just a stone's throw from the Eiffel Tower.",
-          price: 195.0,
+          price: 157.0,
           previewImage: null,
         },
         {
@@ -155,7 +155,7 @@ module.exports = {
           name: "Sydney Harbor View",
           description:
             "Spacious 2 bedroom apartment overlooking Sydney Harbor.",
-          price: 245.0,
+          price: 445.0,
           previewImage: null,
         },
         {
@@ -168,7 +168,7 @@ module.exports = {
           lng: -87.6298,
           name: "Windy City Apartment",
           description: "Located in the heart of Chicago near all the eateries.",
-          price: 200.0,
+          price: 300.0,
           previewImage: null,
         },
         {
@@ -181,7 +181,7 @@ module.exports = {
           lng: -157.8583,
           name: "Hawaii Dream",
           description: "Beachside property for your tropical escape.",
-          price: 300.0,
+          price: 600.0,
           previewImage: null,
         },
         {
@@ -207,7 +207,7 @@ module.exports = {
           lng: -84.388,
           name: "Southern Comfort",
           description: "Experience southern hospitality in this charming home.",
-          price: 150.0,
+          price: 350.0,
           previewImage: null,
         },
         {
@@ -233,7 +233,7 @@ module.exports = {
           lng: 85.324,
           name: "Base Camp Retreat",
           description: "Ideal for trekkers and adventure seekers.",
-          price: 75.0,
+          price: 135.0,
           previewImage: null,
         },
         {
@@ -246,7 +246,7 @@ module.exports = {
           lng: 31.2357,
           name: "Pyramids View",
           description: "Rooftop terrace with a view of the Pyramids.",
-          price: 90.0,
+          price: 190.0,
           previewImage: null,
         },
         {
@@ -259,7 +259,7 @@ module.exports = {
           lng: -118.2437,
           name: "Hollywood Lights",
           description: "In the heart of Hollywood. Star-studded neighborhood.",
-          price: 220.0,
+          price: 420.0,
           previewImage: null,
         },
         {
@@ -272,7 +272,7 @@ module.exports = {
           lng: -43.1729,
           name: "Copacabana Palace",
           description: "Studio apartment near the famous Copacabana beach.",
-          price: 100.0,
+          price: 105.0,
           previewImage: null,
         },
       ],

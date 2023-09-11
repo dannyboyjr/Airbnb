@@ -21,7 +21,7 @@ const SpotList = () => {
     return (
         <>
           <div className="spots-container">
-            <div className="spots">
+            <div className="all-spots-layout">
               {isLoaded && 
                 spotArray.map(spot => (
                   <SpotCard key={spot.id} spot={spot}/>

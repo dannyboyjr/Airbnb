@@ -9,11 +9,10 @@ const Profile = () => {
     return (
         <div className="page-layout-for-footer" >
             <div>
-                <h3>My Listings</h3>
                  <MyListings />
             </div>
             <div>
-                <h3>My reviews</h3>
+
                  <div className="reviewsAndBookings">
             <MyReviewList />
             </div>

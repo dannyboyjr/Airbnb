@@ -1,4 +1,4 @@
-
+import './MyListings.css'
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { loadAllSpots } from '../../store/spots';
@@ -23,6 +23,8 @@ const MyListings = () => {
     }, [dispatch])
 
     return (
+        <div className='my-listings-container'>
+        <h3 className='my-listings-title'>My Listings</h3>
         <div className='spots'>
             {isLoaded &&
                 userSpots.map(spot => (
@@ -30,6 +32,7 @@ const MyListings = () => {
                 ))
             }
 
+        </div>
         </div>
     )
 }
