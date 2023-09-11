@@ -2,19 +2,17 @@
 .spotCard{
     display: flex;
     flex-direction: column;
-    justify-content: space-between
-;   
-    margin: 10px;
-    width: 280px;
-    height: 335px;
-    border-radius: 6%;
+    justify-content: space-between;
+    width: 312px;
+    height: 390px;
+    border-radius: 3%;
 
 }
 .spotCard:hover {
     box-shadow: 2px 2px 5px #888;
 }
 .elementsBelowPic{
-margin: 15px;
+margin: 1px;
 }
 
 .spotCardName{

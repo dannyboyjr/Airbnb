@@ -20,16 +20,18 @@ const SpotList = () => {
 
     return (
         <>
-        <div className='spots'>
-        {isLoaded && 
-        spotArray.map(spot => (
-            <SpotCard key={spot.id} spot={spot}/>
-        ))
-    }
-        </div>
-        
+          <div className="spots-container">
+            <div className="spots">
+              {isLoaded && 
+                spotArray.map(spot => (
+                  <SpotCard key={spot.id} spot={spot}/>
+                ))
+              }
+            </div>
+          </div>
         </>
-    )
+      )
+      
 }
 
 export default SpotList

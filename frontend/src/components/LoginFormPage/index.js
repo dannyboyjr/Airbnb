@@ -30,12 +30,8 @@ function LoginFormPage() {
   const loginSeeder = (e)=>{
     setErrors([]);
     setCredential("user1@user.io")
-    setPassword('password2')
+    setPassword('password1')
     return dispatch(sessionActions.login({credential, password }))
-      // .catch(async (res) => {
-      //   const data = await res.json();
-      //   if (data && data.errors) setErrors(data.errors);
-      // });
   }
 
   return (

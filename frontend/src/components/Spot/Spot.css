@@ -11,7 +11,6 @@
 
 .spotInfo{
 display: flex;
-/* background-color: lightgray; */
 justify-content: flex-start;
 gap: 25px;
 max-width: 550px;

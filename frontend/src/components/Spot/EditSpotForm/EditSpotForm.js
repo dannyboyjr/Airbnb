@@ -57,6 +57,9 @@ const EditSpotForm = ({spot, id}) => {
   
 
     return sessionUser.id ? (
+        <div className="create-spot-form-container">
+      <div className="create-spot-form-wrapper">
+      <h2>Edit Listing</h2>
         <form className='create' onSubmit={handleSubmit}>
 
             <label>Name:</label>
@@ -120,7 +123,7 @@ const EditSpotForm = ({spot, id}) => {
 
             />  
 
-            <button>Edit Listing</button>
+            <button className="blue-create-spot-btn" >Edit Listing</button>
 
             {error.length > 0 && 
             <ul>
@@ -132,6 +135,8 @@ const EditSpotForm = ({spot, id}) => {
 
 
         </form>
+         </div>
+         </div>
     ) : null
 }
 

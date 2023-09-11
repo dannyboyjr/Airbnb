@@ -18,6 +18,7 @@ const CreateSpotForm = ({ spot }) => {
   const [lat, setLat] = useState(spot.lat);
   const [lng, setLng] = useState(spot.lng);
   const [price, setPrice] = useState(spot.price);
+  const [spotImage, setSpotImage] = useState(spot.spotImage);
   const [error, setError] = useState([]);
 
   const handleSubmit = async (e) => {
@@ -38,6 +39,7 @@ const CreateSpotForm = ({ spot }) => {
       lat,
       lng,
       price,
+      spotImage
     };
 
     dispatch(createSpot(spot))
@@ -51,6 +53,7 @@ const CreateSpotForm = ({ spot }) => {
         setLat("");
         setLng("");
         setPrice("");
+        setSpotImage("")
         history.push("/");
       })
       .catch(async (response) => {
@@ -122,6 +125,12 @@ const CreateSpotForm = ({ spot }) => {
             min={0}
             onChange={(e) => setPrice(e.target.value)}
             value={price}
+          />
+          <label>Preview Image</label>
+          <input
+            type="text"
+            onChange={(e) => setSpotImage(e.target.value)}
+            value={spotImage || ''}
           />
 
           <button className="blue-create-spot-btn">Add Listing</button>

@@ -24,10 +24,16 @@ const Spot = ({id}) => {
     },[dispatch])
 
     const handleDelete = () => {
-        dispatch(deleteASpotById(id))
-        history.push(`/`);
-        
-    }
+        // Display a confirmation dialog
+        const isConfirmed = window.confirm('Are you sure you want to delete your listing?');
+    
+        if (isConfirmed) {
+          // If the user confirms, proceed with the deletion
+          dispatch(deleteASpotById(id));
+          history.push(`/`);
+        }
+      };
+    
 
     const handleEdit = () => {
         history.push(`/spots/${id}/edit`);

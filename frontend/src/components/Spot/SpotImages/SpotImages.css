@@ -1,12 +1,15 @@
-.spotImages{
-
+.spotImages {
     margin: 10px;
     height: 350px;
     width: 1060px;
     margin: auto center;
-}
-.previewImg{
+  }
+  
+  .previewImg {
     height: 334px;
     width: 560px;
+    object-fit: cover;  /* cover ensures the image covers the entire container while maintaining its aspect ratio */
+    object-position: center;  /* centers the image within the container */
     border-radius: 15px;
-}
+  }
+  
