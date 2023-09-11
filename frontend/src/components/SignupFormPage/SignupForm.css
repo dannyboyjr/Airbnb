@@ -1,0 +1,70 @@
+/* frontend/src/components/SignupFormPage/SignupForm.css */
+
+/* Center the signup form both horizontally and vertically */
+.signup-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+  
+  .signup-form-wrapper {
+    width: 600px; /* Adjust the width as needed */
+    padding: 25px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center; /* Center the form content horizontally */
+
+  }
+  
+  /* Style the form labels and inputs */
+  label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    text-align: left; /* Align the labels to the left */
+  }
+  
+  input[type="text"],
+  input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  /* Style the buttons */
+ .blue-signup-btn{
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff; 
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+ .blue-signup-btn:hover {
+    background-color: #0056b3; 
+  }
+  
+  /* Style the error messages */
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    color: #ff0000; /* Error text color (red in this example) */
+    font-weight: bold;
+  }
+  
+  /* Style the h2 element */
+  h2 {
+    margin-bottom: 20px; /* Add some space between the h2 and the form */
+    font-size: 34px; /* Adjust the font size as needed */
+    font-weight: bold;
+  }
+  

@@ -30,23 +30,22 @@ function LoginFormPage() {
   const loginSeeder = (e)=>{
     setErrors([]);
     setCredential("user1@user.io")
-    setPassword('password2')
+    setPassword('password1')
     return dispatch(sessionActions.login({credential, password }))
-      // .catch(async (res) => {
-      //   const data = await res.json();
-      //   if (data && data.errors) setErrors(data.errors);
-      // });
   }
 
   return (
     <div className="page-layout-for-footer">
-      <div>
+    <div className="login-form-container">
+    <div className='login-form-wrapper'>
+      <div className='login-form'>
+      <h2>Login</h2>
     <form onSubmit={handleSubmit}>
       <ul>
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
       </ul>
       <label>
-        Username or Email
+        Email
         <input
           type="text"
           value={credential}
@@ -63,11 +62,13 @@ function LoginFormPage() {
           required
         />
       </label>
-      <button type="submit">Log In</button>
+      <button className='blue-login-bnt' type="submit">Log In</button>
       <button onClick={loginSeeder}>demo login</button>
     </form>
     </div>
-    <Footer />
+    </div>
+    </div>
+           <Footer />
     </div>
   );
 }

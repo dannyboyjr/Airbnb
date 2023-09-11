@@ -1,6 +1,21 @@
-.myReviewList{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    margin: 15px;
+.myReviewContainer {
+    width: 100%;
+    margin-top: 50px;
+}
+
+.myReviewTitle {
+    font-size: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+
+}
+
+.myReviewSection {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 330px));
+    justify-content: center;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 50px;
 }

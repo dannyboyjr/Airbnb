@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
+import clonebnbLogo from '../../assets/clonebnbLogo.png'; 
 
 function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
@@ -36,8 +37,14 @@ function Navigation({ isLoaded }){
   return (
     <div className='nav-bar'>
     <ul >
+      
       <li className='nav-bar-buttons'>
-        <NavLink className="navbar-logo" exact to="/"></NavLink>
+      <div className='home-btn'>
+    <NavLink exact to="/">
+        <img className="navbar-logo" src={clonebnbLogo} alt="Clonebnb logo" />
+        <p>clonebnb</p>
+    </NavLink>
+</div>
         {isLoaded && sessionLinks}
       </li>
     </ul>

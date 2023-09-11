@@ -9,14 +9,16 @@ function Footer() {
     <footer className="footer">
       
       <div className="social-icons">
-      <p>Airbnb Clone 2023</p>
         <a href="https://github.com/dannyboyjr" target="_blank" rel="noopener noreferrer">
           <img src={githubLogo} alt="Github Icon" className="icon" />
         </a>
         <a href="https://www.linkedin.com/in/danieljameskimball/" target="_blank" rel="noopener noreferrer">
           <img src={linkedinLogo} alt="LinkedIn Icon" className="icon" />
         </a>
+        
       </div>
+      <p>Airbnb Clone - Dan Kimball</p>
+      
     </footer>
   );
 }

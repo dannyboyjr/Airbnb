@@ -1,14 +1,18 @@
- .thumbImage{
-    display: box;
-    height: auto;
-    width: 280px;
+.thumbImage {
+    display: block;
+    height: 298px;
+    width: 312px;
+    object-fit: cover;  /* cover will make sure your image covers the entire container while maintaining the aspect ratio */
+    object-position: center;  /* adjust the position of the image within the box */
     border-radius: 10px;
-
-}
-
-.NoImage{
+  }
+  
+  .NoImage {
     display: flex;
     margin-left: 33px;
     max-width: 215px;
+    object-fit: cover;
+    object-position: center;
     border-radius: 10px;
-}
+  }
+  

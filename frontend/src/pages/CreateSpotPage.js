@@ -20,7 +20,6 @@ const CreateSpotPage = () => {
     return (
         <div className="page-layout-for-footer">
         <div>
-            <h1>Add Spot</h1>
             <CreateSpotForm spot={newSpot}/>
         </div>
            <Footer />

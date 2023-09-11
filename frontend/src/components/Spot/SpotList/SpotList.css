@@ -1,6 +1,16 @@
-.spots{
+.spots-container {
     display: flex;
-    flex-wrap: wrap;
-    margin-top: 25px;
     justify-content: center;
-}
+    margin-top: 70px;
+    margin-bottom: 50px;
+  }
+  
+  .all-spots-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 330px)); /* Replace 250px with your card's minimum width */
+    gap: 2rem;
+    justify-content: center;
+    width: 95%;
+    
+  }
+

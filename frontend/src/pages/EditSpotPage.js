@@ -20,7 +20,6 @@ const EditSpotPage = () => {
     return (
         <div className="page-layout-for-footer">
         <div>
-            <h1>Edit Spot</h1>
             {isLoaded &&
             <EditSpotForm spot={spotById} id={id}/>
 }

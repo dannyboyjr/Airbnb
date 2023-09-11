@@ -18,11 +18,14 @@ const MyReviewList = () => {
     },[dispatch])
 
     return(
+        <div className='myReviewContainer'>
+        <h3 className='myReviewTitle'>My Reviews</h3>
         <div className='myReviewSection'>
             {isLoaded && myReviewsArray.map((review, i) =>(
                 <MyReviewCard key={i} review={review} />
             )) }
             
+        </div>
         </div>
     )
 }
