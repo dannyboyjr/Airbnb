@@ -12,15 +12,31 @@ nav{
     
 
 }
+.home-btn {
+  display: flex;
+  align-items: center;
+  margin-left: 100px;
+}
+
+.home-btn img, .home-btn p {
+  display: inline-block; /* Force inline */
+  vertical-align: middle; /* Align middle */
+}
 
 .navbar-logo {
-    height: 35px;
-    width: 100px;
-    margin-left: 100px;
-    background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Airbnb_Logo_B%C3%A9lo.svg/1200px-Airbnb_Logo_B%C3%A9lo.svg.png');
-    background-size: 100%;
-    background-repeat: no-repeat;
-  }
+  height: 30px;
+  width: 30px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  margin-right: 10px;
+}
+
+.home-btn p {
+  color: #FD5B5E; /* change the text color */
+  font-size: 20px;
+  font-family: 'Circular Std', sans-serif;  /* this is just an example; you can use any Airbnb-like font */
+  margin: 0;  /* remove default margins */
+}
 
   .sessionButtons{
 
