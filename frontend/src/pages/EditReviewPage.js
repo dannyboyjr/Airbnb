@@ -25,7 +25,6 @@ const EditReviewPage = () => {
   return (
     <div className="page-layout-for-footer">
       <div>
-        <h1>Edit Review</h1>
         {isLoaded && <EditReview review={review[0]} />}
       </div>
       <Footer />
