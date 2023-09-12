@@ -67,7 +67,7 @@ module.exports = {
       {
         userId: 2,
         spotId: 5,
-        review: "The best pizza in town!",
+        review: "Great stay. However, the host where super particular and checked in frequently which I thought was a bit much.",
         stars: 4
       },
       {
