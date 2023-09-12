@@ -132,9 +132,9 @@ module.exports = {
       },
       {
         userId: 2,
-        spotId: 13,
-        review: "Nice place but quite expensive.",
-        stars: 3
+        spotId: 2,
+        review: "Nice place but golf course was quite expensive.",
+        stars: 4
       },
       {
         userId: 4,
@@ -234,7 +234,7 @@ module.exports = {
       },
       {
         userId: 2,
-        spotId: 18,
+        spotId: 15,
         review: "Clean but far from major attractions.",
         stars: 3
       },

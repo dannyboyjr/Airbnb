@@ -1,0 +1,75 @@
+/* The outer container that centralizes the inner content */
+.specific-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: calc(100vh - 140px); 
+
+  }
+  
+  /* The card that holds all your form content */
+  .specific-card {
+    width: 600px;
+    height: 720px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  /* Styling for the label and input within this specific component */
+  .edit-reivew-label {
+    display: block;  /* makes sure the label takes the full width */
+  }
+  
+  .edit-reivew-textarea {
+    padding: 10px;
+
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;  /* takes full width of the parent container */
+    height: 110px;  /* you can adjust the height as needed */
+    resize: none;  /* disables textarea resizing */
+
+  }
+  
+  /* Styling for the error messages */
+  .specific-error-list {
+    color: red;
+    margin-bottom: 20px;
+  }
+  
+  .spot-image-edit-reivew {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;  /* Optional */
+  }
+  
+  .spot-name {
+    margin-top: 10px;
+    font-size: 20px;
+  }
+
+  .edit-my-review-container .star-rating .star {
+    font-size: 20px;  /* adjust as needed */
+  }
+
+ 
+  .save-edit-review-bnt{
+    width: 20%;
+    padding: 5px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .cancel-btn{
+    color: gray;
+  }
