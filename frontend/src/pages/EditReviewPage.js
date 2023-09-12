@@ -1,40 +1,36 @@
-
-import EditReview from '../components/Reviews/EditReview/EditReview'
-import { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import {loadSpotById} from '../store/spotByIdStore'
-import { useParams } from 'react-router-dom';
-import Footer from '../components/Footer/Footer'
+import EditReview from "../components/Reviews/EditReview/EditReview";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { loadSpotById } from "../store/spotByIdStore";
+import { useParams } from "react-router-dom";
+import Footer from "../components/Footer/Footer";
 
 const EditReviewPage = () => {
-    
-    const { id } = useParams();
-    const [isLoaded, setIsLoaded ] = useState(false)
-    const spotbyId = useSelector(state => state.spotById.Reviews)
-    let sessionUser = useSelector(state => state.session.user);
-    const dispatch = useDispatch()
-    let review = spotbyId.filter(review => sessionUser.id === review.userId)
-    
-    useEffect(()=>{
+  const { id } = useParams();
+  const [isLoaded, setIsLoaded] = useState(false);
+  const spotbyId = useSelector((state) => state.spotById);
+  const spotReviews = spotbyId.Reviews
+  let sessionUser = useSelector((state) => state.session.user);
+  const dispatch = useDispatch();
+  let review;
+  if (spotReviews && sessionUser) {
+    review = spotReviews.filter((review) => sessionUser.id === review.userId);
 
-        dispatch(loadSpotById(1)).then(()=> setIsLoaded(true))
-    },[dispatch])
-    
+  }
 
-    return (
-        < div className="page-layout-for-footer">
-        <div>
-            <h1>Edit Review</h1>
-            {isLoaded && 
-            <EditReview review={review[0]} />
-            }
-        </div>
-                <Footer />
-        </div>
-     
-        )
-}
+  useEffect(() => {
+    dispatch(loadSpotById(spotbyId.id)).then(() => setIsLoaded(true));
+  }, [dispatch]);
 
+  return (
+    <div className="page-layout-for-footer">
+      <div>
+        <h1>Edit Review</h1>
+        {isLoaded && <EditReview review={review[0]} />}
+      </div>
+      <Footer />
+    </div>
+  );
+};
 
-
-export default EditReviewPage
+export default EditReviewPage;
