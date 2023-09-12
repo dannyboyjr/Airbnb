@@ -1,19 +1,28 @@
 
 import { useDispatch, useSelector } from 'react-redux'
+import { useState } from "react";
 import {deleteMyReview} from '../../../store/reviewsStore'
 import { useHistory } from 'react-router-dom';
 import formateDistanceToNow from 'date-fns/formatDistanceToNow';
+import { loadSpotById } from "../../../store/spotByIdStore";
 
 
 const MyReviewCard = ({review}) => {
+    const [isLoaded, setIsLoaded] = useState(false);
     let sessionUser = useSelector(state => state.session.user);
     let dispatch = useDispatch()
     const history = useHistory();
 
 
+
     const handleEdit = (e) => {
         e.preventDefault()
-        history.push(`/reviews/${review.id}`);
+
+
+            dispatch(loadSpotById(review.Spot.id)).then(() => setIsLoaded(true)).then(() => history.push(`/reviews/${review.id}`))
+
+        
+        
     }
 
     const handleDelete = (e) => {
