@@ -1,5 +1,5 @@
 const express = require("express");
-const { Spot, Review, User, ReviewImage } = require('../../db/models');
+const { Spot, Review, User, ReviewImage, SpotImage } = require('../../db/models');
 const { requireAuth } = require("../../utils/auth");
 let { Sequelize } = require('sequelize');
 const newError = require("../../utils/newError");
@@ -136,6 +136,45 @@ router.delete("/:reviewId", requireAuth, async (req, res, next)=>{
     res.json({message: "Review successfully deleted."})
 })
 
+//Get Review by ID
+router.get("/:reviewId", requireAuth, async (req, res, next) => {
+    const reviewId = parseInt(req.params.reviewId, 10);
+  
+    try {
+      const review = await Review.findByPk(reviewId, {
+        include: [
+          {
+            model: User,
+            attributes: ["id", "firstName", "lastName"],
+          },
+          {
+            model: Spot,
+            attributes: ["id", "userId", "address", "city", "state", "country", "lat", "lng", "name", "price"],
+            include: [
+              {
+                model: SpotImage
+                // Add any attributes or filters for SpotImage if you need them
+              }
+            ]
+          },
+        ],
+      });
+  
+      if (!review) {
+        const err = new Error("Review couldn't be found");
+        err.status = 404;
+        err.title = 'Review not Found';
+        err.errors = ["Provided reviewId not found"];
+        return next(err);
+      }
+  
+      res.json(review);
+    } catch (error) {
+      next(error);
+    }
+  });
+  
+
 
 //delete review image
 router.delete("/:reviewId/images/:imageId", requireAuth, async (req, res, next)=>{
@@ -165,5 +204,6 @@ router.delete("/:reviewId/images/:imageId", requireAuth, async (req, res, next)=
     await doomedReviewImage.destroy()
     res.json({message: "Review image successfully deleted."})
 })
+
 
 module.exports = router;
