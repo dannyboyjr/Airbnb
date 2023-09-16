@@ -8,7 +8,9 @@
   }
 
   .reviewsAndBookings{
-    display: flex
+    display: flex;
+    margin: 0 100px;
+
   }
 
   html body {
@@ -29,4 +31,3 @@
   }
 
   
-

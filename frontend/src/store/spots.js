@@ -66,10 +66,6 @@ export const createSpot = (spot) => async (dispatch)=>{
 
   if (response.ok) {
     const createdSpot = await response.json();
-    console.log("RESPONSE")
-    console.log("RESPONSE")
-    console.log("RESPONSE")
-    console.log(spot)
     dispatch(create(createdSpot));
 
     // Extract the preview URL from the spot object
