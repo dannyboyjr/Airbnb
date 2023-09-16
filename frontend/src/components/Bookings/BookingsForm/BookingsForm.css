@@ -4,10 +4,10 @@
     flex-direction: column;
     align-items: center;
     max-width: 400px;
-    border: 1px solid black;
+    border: .5px solid grey;
     border-radius: 5px;
     padding: 20px;
-    margin: auto;
+
   }
   
   /* Top information: Price per night and rating */
@@ -30,10 +30,33 @@
   
   /* Guests input section */
   .guests-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    margin-top: -15px;
   }
+
+  .input-with-label {
+    position: relative;
+  }
+  
+  .input-with-label::before {
+    content: 'Guest:';
+    position: absolute;
+    left: 10px; /* Adjust as needed */
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+   
+  }
+  
+  .guest-input {
+    padding-left: 60px; /* Makes room for the 'Guest:' label */
+    width: 100%;
+   height:50px;
+   border-radius: 5px;
+   border: .5px solid grey;
+
+  }
+  
+  
   
   /* Reserve button */
   .formButton {
@@ -73,6 +96,10 @@
     display: flex;
     justify-content: space-between;
     margin-top: 10px;
+  }
+
+.calculation h4 {
+    color: black
   }
   
   /* Gray line dividing everything above */
@@ -134,9 +161,9 @@ justify-content: flex-start;
 }
 
 .checkin-checkout-boxes input {
-  width: 45%;
+  width: 100%;
   cursor: pointer;
-  padding: 10px;
+  padding: 15px;
 }
 
 .date-picker-container {

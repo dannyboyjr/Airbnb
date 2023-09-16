@@ -18,7 +18,7 @@ const Profile = () => {
           <MyReviewList />
         </div>
       </div>
-      <Footer />
+
     </div>
   );
 };

@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loadSpotById } from "../store/spotByIdStore";
 import { useParams } from "react-router-dom";
-import Footer from "../components/Footer/Footer";
 
 const EditReviewPage = () => {
   const { id } = useParams();
@@ -27,7 +26,7 @@ const EditReviewPage = () => {
       <div>
         {isLoaded && <EditReview review={review[0]} />}
       </div>
-      <Footer />
+
     </div>
   );
 };

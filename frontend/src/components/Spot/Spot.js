@@ -73,7 +73,7 @@ const Spot = ({ id }) => {
         <div className="SpotbyId">
           <h1 className="spotByIdName">{spotById.name}</h1>
           <div className="spotInfo">
-            <div>stars {Math.round(spotById.averageStars * 100) / 100} ·</div>
+            <div><span className="star">&#9733;</span>{" "}{Math.round(spotById.averageStars * 100) / 100} </div>
             <div>{spotById.totalReviews} reviews</div>
             <div> Superhost </div>
             <div>
@@ -113,14 +113,20 @@ const Spot = ({ id }) => {
             </div>
           </div>
           <div className="gray-line"> </div>
+
           <div className="descriptionSection">
             <span className="priceById">
               <p>Description</p>
             </span>
+            <p className="description">
             {spotById.description}
+            </p>
           </div>
+          
           </div>
+          <div className="booking">
           <BookingsForm id={id} />
+          </div>
         </div>
 
         </div>)}

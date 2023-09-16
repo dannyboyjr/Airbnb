@@ -4,7 +4,11 @@ import './Footer.css';
 import githubLogo from "../../assets/githubimg.png"
 import linkedinLogo from '../../assets/LinkedIn.png'
 
-function Footer() {
+function Footer({isLoaded}) {
+  if (!isLoaded) {
+    return null;  // Return null to render nothing if isLoaded is false
+  }
+  
   return (
     <footer className="footer">
       

@@ -52,8 +52,9 @@ function App() {
             <Home />
           </Route>
         </Switch>
+        
       )}
-      {/* <Footer /> */}
+      <Footer isLoaded={isLoaded}  />
     </>
   );
 }

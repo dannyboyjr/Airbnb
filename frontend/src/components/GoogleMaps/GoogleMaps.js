@@ -28,7 +28,7 @@ const GoogleMaps = ({id}) => {
 
   return (
     
-    <div style={{ height: '500px', width: '70%' }}>
+    <div style={{ height: '700px', width: '60%' }}>
       {isLoaded && (
       <GoogleMapReact
         bootstrapURLKeys={{ key: process.env.GOOGLE_MAPS_API}}
