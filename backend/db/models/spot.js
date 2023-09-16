@@ -51,7 +51,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.DECIMAL,
       allowNull: false,
     },
-    previewImage: DataTypes.BOOLEAN
+    previewImage: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Spot',

@@ -66,7 +66,7 @@ module.exports = {
         • Outdoor living space
           `,
           price: 800.55,
-          previewImage: true
+          previewImage: null
         },
         {
           userId: 3,
@@ -79,7 +79,7 @@ module.exports = {
           name: "Miami Beach",
           description: "2 bed 1 Bath right on Mami Beach! Amazing location",
           price: 200.0,
-          previewImage: true,
+          previewImage: null,
         },
         {
           userId: 1,
@@ -92,7 +92,7 @@ module.exports = {
           name: "Luxury Hamptons Getaway",
           description: "Experience luxury in the heart of The Hamptons. Book your stay now!",
           price: 430.0,
-          previewImage: true
+          previewImage: null
         },
         {
           userId: 3,
@@ -114,7 +114,7 @@ module.exports = {
           
           Guests shall be responsible for any fines that may occur due to violation of any law, convention or internal regulation of the condominium in which the house is located. Payment of the fine shall be made before check-out, as soon as homeowners are notified as to the motive and amount of the fine.`,
           price: 780.0,
-          previewImage: true
+          previewImage: null
         },
         {
           userId: 3,
@@ -135,7 +135,7 @@ module.exports = {
           
           Chef services can be arranged and a full time driver!`,
           price: 195.0,
-          previewImage: true,
+          previewImage: null,
         },
         {
           userId: 4,
