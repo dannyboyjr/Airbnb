@@ -1,0 +1,13 @@
+.spot-page {
+    display: flex;
+    justify-content: center;
+    margin: 25px 300px;
+    max-width: 1119px;
+}
+
+.reviewsAndBookings{
+    display: flex;
+    justify-content: space-between;
+    margin: 100px 0;
+
+  }

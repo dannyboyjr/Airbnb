@@ -1,15 +1,43 @@
-.spotImages {
-    margin: 10px;
-    height: 350px;
-    width: 1060px;
-    margin: auto center;
-  }
   
   .previewImg {
-    height: 334px;
-    width: 560px;
-    object-fit: cover;  /* cover ensures the image covers the entire container while maintaining its aspect ratio */
-    object-position: center;  /* centers the image within the container */
-    border-radius: 15px;
+  height: 560px;
+  width: 542px;
+  object-fit: cover;
+  object-position: center;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
   }
   
+  /* Style for the thumbnail container */
+  .thumb-nail-container {
+
+    display: flex;
+    flex-wrap: wrap;
+    width: 600px;  /* Half of the main image width */
+    margin-left: 5px;
+  }
+  
+  /* Style for each thumbnail */
+  .thumb-nail-photos {
+   
+    width: 272px;  /* Half of the thumbnail container width */
+    height: 273px;  /* Half of the main image height */
+    background-color: lightgray;
+    margin: 0px 7px;
+    object-fit: cover;
+    object-position: center;
+
+  }
+
+  .top-right-thumb-nail {
+
+    border-top-right-radius: 15px;
+    margin-bottom: 14px;
+ 
+
+  }
+
+  .bottom-right-thumb-nail {
+    border-bottom-right-radius: 15px;
+
+  }

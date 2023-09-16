@@ -6,10 +6,10 @@ import ThumbNailImage from '../ThumbNailImage/ThumbNailImage';
 const SpotCard = ({spot}) => {
     
     let spotImageArray = spot.SpotImages
+    
 
     return(
-        <Link className="link" to={`/spots/${spot.id}`}>
-
+        <Link className="link" to={`/spots/${spot.id}`} onClick={() => window.scrollTo(0, 0)}>
         <div className='spotCard'>
             
             <ThumbNailImage images={spotImageArray} />

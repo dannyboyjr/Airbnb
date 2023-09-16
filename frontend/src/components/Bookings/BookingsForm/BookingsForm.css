@@ -1,23 +1,177 @@
-
-.bookingFormCard{
-    display: box;
-    min-width: 400px;
-    border: 1px solid black;
+/* Container for the entire booking form card */
+.bookingFormCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 400px;
+    border: .5px solid grey;
     border-radius: 5px;
-}
+    padding: 20px;
 
-.bookingForm{
-    display: grid;
+  }
+  
+  /* Top information: Price per night and rating */
+  .topInfo {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 14px;
+  }
+  
+  .priceById {
+    font-weight: bold;
+  }
+  
+  .ratingInfo {
+    color: black;
+  }
 
-}
 
-.formButton{
-    margin: 5px;
+  
+  /* Guests input section */
+  .guests-container {
+    margin-top: -15px;
+  }
+
+  .input-with-label {
+    position: relative;
+  }
+  
+  .input-with-label::before {
+    content: 'Guest:';
+    position: absolute;
+    left: 10px; /* Adjust as needed */
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+   
+  }
+  
+  .guest-input {
+    padding-left: 60px; /* Makes room for the 'Guest:' label */
+    width: 100%;
+   height:50px;
+   border-radius: 5px;
+   border: .5px solid grey;
+
+  }
+  
+  
+  
+  /* Reserve button */
+  .formButton {
     height: 60px;
-    width: 250px;
+    width: 100%;
     text-align: center !important;
-    background: linear-gradient(to right, rgb(230, 30, 77) 0%, rgb(227, 28, 95) 50%);
+    background: linear-gradient(to right, #e51e4d 0%, #d70465 100%);
     color: white;
+    border: none;
     border-radius: 10px;
     font-size: 15px;
+    cursor: pointer;
+    margin: 10px 0;
+  }
+  
+  /* Calculation section */
+  .calculation {
+    width: 100%;
+    padding-top: 10px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: gray;
+  }
+
+  .calculation#total {
+    border-top: 1px solid gray;
+  }
+  
+  .total {
+    font-weight: bold;
+  }
+  
+  /* Total before taxes section */
+  .total-before-taxes {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+
+.calculation h4 {
+    color: black
+  }
+  
+  /* Gray line dividing everything above */
+  .gray-line {
+    width: 100%;
+    border-top: 1px solid gray;
+    margin-top: 10px;
+  }
+  
+.custom-calendar{
+  border: none !important;
 }
+
+  /* Custom Calendar styles */
+.custom-calendar .react-datepicker__month-container {
+  width: 50%;
+  float: left;
+}
+
+.custom-calendar .react-datepicker__header {
+  background-color: white;
+  border-bottom: none;
+}
+
+.custom-calendar .react-datepicker__current-month {
+  font-size: 1rem;
+  color: black;
+  margin: 25px;;
+
+}
+
+.custom-calendar .react-datepicker__day {
+  width: 2.5rem;
+  height: 2.5rem;
+  line-height: 2.5rem;
+  font-size: 1rem;
+  border-radius: 50%;
+
+}
+
+.date-picker-wrapper {
+display: flex;
+justify-content: flex-start;
+  position: absolute;
+  margin-left:-360px;
+  margin-top: -65px;
+  padding-top: 60px;
+  width: 700px;
+  height: 450px;
+  border-radius: 25px;
+  background: white;
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.1); 
+  z-index: 1;
+}
+
+
+.checkin-checkout-boxes {
+  display: flex;
+}
+
+.checkin-checkout-boxes input {
+  width: 100%;
+  cursor: pointer;
+  padding: 15px;
+}
+
+.date-picker-container {
+  position: relative;
+}
+
+.date-input {
+  z-index: 2;
+  position: relative;
+}
+

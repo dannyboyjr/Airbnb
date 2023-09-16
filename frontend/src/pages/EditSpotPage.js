@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import {loadSpotById} from '../store/spotByIdStore'
 import { useParams } from 'react-router-dom';
-import Footer from '../components/Footer/Footer'
 
 const EditSpotPage = () => {
     const { id } = useParams();
@@ -24,7 +23,7 @@ const EditSpotPage = () => {
             <EditSpotForm spot={spotById} id={id}/>
 }
         </div>
-        <Footer />
+
         </div>
         )
 }

@@ -1,5 +1,4 @@
 import CreateSpotForm from "../components/CreateSpotForm/CreateSpotForm"
-import Footer from '../components/Footer/Footer'
 
 const CreateSpotPage = () => {
 
@@ -22,7 +21,7 @@ const CreateSpotPage = () => {
         <div>
             <CreateSpotForm spot={newSpot}/>
         </div>
-           <Footer />
+
            </div>
         )
 }

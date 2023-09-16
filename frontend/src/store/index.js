@@ -4,6 +4,7 @@ import thunk from 'redux-thunk';
 import spotReducer from './spots';
 import spotByIdReducer from './spotByIdStore';
 import reviewsReducer from './reviewsStore';
+import bookingsReducer from './bookings';
 
 
 
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
   spots: spotReducer,
   spotById: spotByIdReducer,
   myReviews: reviewsReducer,
+  bookings: bookingsReducer,
 
 });
 
