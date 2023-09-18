@@ -1,0 +1,5 @@
+.google-maps {
+    width: 43.75rem;
+    height: 43.75rem; /* or you can specify a height in pixels or other units */
+    margin: 0 auto; /* horizontal margin auto, no vertical margin */
+  }

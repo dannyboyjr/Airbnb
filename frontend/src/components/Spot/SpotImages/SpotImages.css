@@ -10,18 +10,16 @@
   
   /* Style for the thumbnail container */
   .thumb-nail-container {
-
-    display: flex;
-    flex-wrap: wrap;
-    width: 600px;  /* Half of the main image width */
+    display: grid;
+    grid-template-rows: 1fr 1fr; 
+    grid-template-columns: 1fr 1fr; 
     margin-left: 5px;
   }
-  
-  /* Style for each thumbnail */
+
   .thumb-nail-photos {
    
-    width: 272px;  /* Half of the thumbnail container width */
-    height: 273px;  /* Half of the main image height */
+    width: 17rem;  /* Half of the thumbnail container width */
+    height: 17.063rem;  /* Half of the main image height */
     background-color: lightgray;
     margin: 0px 7px;
     object-fit: cover;
@@ -41,3 +39,22 @@
     border-bottom-right-radius: 15px;
 
   }
+
+
+  @media (max-width: 1140px) {
+    /* Hide the thumbnail container and its contents */
+    .thumb-nail-container {
+      display: none;
+    }
+    /* Modify the preview image to be the main image */
+    .previewImg {
+      flex-basis: 100%;  /* Span the entire width */
+      width: calc(100% - 20px);  /* Full width minus some margin */
+      margin: 10px;  /* Add some margin */
+      border-radius: 15px;
+      height: auto;  /* Make it dynamic */
+    }
+  }
+
+
+    

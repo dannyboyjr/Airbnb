@@ -7,13 +7,16 @@ const SpotPage = () => {
   const { id } = useParams();
 
   return (
-    <div className="page-layout-for-footer spot-page" >
+    <div className="spot-page" >
 
       <div>
         <Spot id={id} />
         <div className="reviewsAndBookings">
+        <div className="google-maps">
+        <GoogleMaps id={id} />
+        </div>
           <Reviews id={id} />
-          <GoogleMaps id={id} />
+          
         </div>
       </div>
 
