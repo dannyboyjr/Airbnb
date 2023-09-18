@@ -29,7 +29,7 @@ const GoogleMaps = ({id}) => {
 
   return (
     
-    <div className='google-maps'>
+    <div style={{ width: '43.75rem', height: '43.75rem', margin: '0 auto' }}>
       {isLoaded && (
       <GoogleMapReact
         bootstrapURLKeys={{ key: "AIzaSyD4ouCrB9yff-cM8xhlPaZmVShuaypn0Pg"}}
