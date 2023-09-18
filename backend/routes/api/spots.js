@@ -109,7 +109,7 @@ const spotChecker = [
         .isByteLength({ min: 1, max: 49 })
         .withMessage("Name is required"),
     check("description")
-        .isByteLength({ min:1, max: 2000})
+        .isByteLength({ min:1, max: 20000})
         .withMessage("Description is required"),
     check('address')
         .exists({ checkFalsy: true })
