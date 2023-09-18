@@ -64,3 +64,21 @@ gap: 15px;
     flex: 1;  /* Takes up only the necessary space */
 
   }
+
+
+
+  @media (max-width: 1050px) {
+
+    .info-and-bookings{
+        display: flex;
+        flex-direction: column ;
+        align-items: center;
+        margin: 55px auto;
+        gap: 5rem;
+      }
+      .google-maps {
+        width: 100%;
+        height: 35rem; /* or you can specify a height in pixels or other units */
+        margin: 0 auto; /* horizontal margin auto, no vertical margin */
+      }
+  }

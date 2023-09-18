@@ -4,6 +4,7 @@ import GoogleMapReact from 'google-map-react';
 import pin from '../../assets/maps-and-flags.png';  // Import your logo
 import { useDispatch,useSelector } from "react-redux";
 import { loadSpotById } from "../../store/spotByIdStore";
+import './GoogleMaps.css'
 const Marker = () => (
 
   <div style={{ position: 'absolute', transform: 'translate(-50%, -100%)' }}>
@@ -28,7 +29,7 @@ const GoogleMaps = ({id}) => {
 
   return (
     
-    <div style={{ height: '700px', width: '60%' }}>
+    <div className='google-maps'>
       {isLoaded && (
       <GoogleMapReact
         bootstrapURLKeys={{ key: process.env.GOOGLE_MAPS_API}}
