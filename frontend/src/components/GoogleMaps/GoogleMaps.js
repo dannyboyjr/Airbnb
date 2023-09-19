@@ -32,7 +32,8 @@ const GoogleMaps = ({id}) => {
     <div className='google-maps'>
       {isLoaded && (
       <GoogleMapReact
-        bootstrapURLKeys={{ key: process.env.GOOGLE_MAPS_API}}
+      bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAPS_API }}
+
         defaultCenter={{
           lat: spot.lat,
           lng: spot.lng,
