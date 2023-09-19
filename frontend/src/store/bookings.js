@@ -82,6 +82,9 @@ export const createBooking = (spotId, bookingData) => async (dispatch) => {
   if (response.ok) {
     const newBooking = await response.json();
     dispatch(create(newBooking.createBooking));
+  } else {
+    const errorData = await response.json();  // Assuming your server responds with JSON
+    return errorData
   }
 };
 

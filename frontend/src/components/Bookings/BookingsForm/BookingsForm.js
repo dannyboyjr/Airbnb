@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from 'react-router-dom';
 import { loadSpotById } from "../../../store/spotByIdStore";
 import { createBooking, loadAllSpotBookings } from "../../../store/bookings";
 import DatePicker from "react-datepicker";
@@ -13,6 +14,8 @@ const BookingsForm = ({ id }) => {
   let sessionUser = useSelector((state) => state.session.user);
   let currentBookings = useSelector((state) => state.bookings);
   const currentBookingsArray = Object.values(currentBookings);
+  const history = useHistory();
+
   const [showDatePicker, setShowDatePicker] = useState(false);
   const [checkin, setCheckin] = useState(null);
   const [checkout, setCheckout] = useState(null);
@@ -32,7 +35,15 @@ const BookingsForm = ({ id }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!checkin || !checkout || !sessionUser) {
-      alert("Please make sure all fields are filled correctly.");
+      alert("Be sure to fill out both checkin date and checkout date.");
+      return;
+    }
+    if ( sessionUser.id == spotById.userId) {
+      alert("Cannot book on a listing you own!");
+      setCheckin(null);
+      setCheckout(null);
+      setGuests(null);
+      setShowDatePicker(false);
       return;
     }
 
@@ -51,11 +62,13 @@ const BookingsForm = ({ id }) => {
       setCheckout(null);
       setGuests(null);
       setShowDatePicker(false);
+      history.push('/profile')
     } catch (err) {
-      alert(`Booking failed! Error: ${err.message}`);
+      alert(`Dates are unavailable or you already have a booking on those dates!`);
+
     }
   };
-
+ç
   const handleDateChange = (dates) => {
     const [start, end] = dates;
     setCheckin(start);
@@ -227,7 +240,7 @@ const BookingsForm = ({ id }) => {
             <p>You won't be charged yet</p>
             <div className="calculation">
               <h5>Total for {nights} night(s)</h5>
-              <h5>${calculateTotal(checkin, checkout, spotById.price)}</h5>
+              <h5>${calculateTotal(checkin, checkout, spotById.price).toFixed(2)}</h5>
             </div>
 
             <div className="calculation">
