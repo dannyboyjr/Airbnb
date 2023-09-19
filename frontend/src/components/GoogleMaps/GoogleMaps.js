@@ -32,7 +32,8 @@ const GoogleMaps = ({id}) => {
     <div style={{ width: '43.75rem', height: '43.75rem', margin: '0 auto' }}>
       {isLoaded && (
       <GoogleMapReact
-        bootstrapURLKeys={{ key: "AIzaSyD4ouCrB9yff-cM8xhlPaZmVShuaypn0Pg"}}
+      bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAPS_API }}
+
         defaultCenter={{
           lat: spot.lat,
           lng: spot.lng,

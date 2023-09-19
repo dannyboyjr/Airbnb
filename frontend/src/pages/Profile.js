@@ -12,7 +12,7 @@ const Profile = () => {
         <MyListings />
       </div>
       <div>
-        <div className="reviewsAndBookings">
+        <div className="profile-layout">
             <MyBookingsList />
             
           <MyReviewList />
