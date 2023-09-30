@@ -4,7 +4,7 @@ services:
     build: ./backend
     image: dannyboyjr/clonebnb_backendIMG
     env_file:
-      - /root/backend.env
+      - ./backend/.env
     ports:
       - "8080:8000"
     container_name: backend_clonebnb_container
@@ -14,7 +14,7 @@ services:
     build: ./frontend
     image: dannyboyjr/clonebnb_frontendIMG
     env_file:
-      - /root/backend.env
+      - ./frontend/.env
     ports:
       - "3000:3000"
     container_name: frontend_clonebnb_container
