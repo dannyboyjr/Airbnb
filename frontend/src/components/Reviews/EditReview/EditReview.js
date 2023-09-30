@@ -64,12 +64,6 @@ useEffect(() => {
   }
 }, [spotReview]);
 
-// ... rest of your component
-
-    
-
-    console.log("EDITREVIEW")
-    console.log(reviewText)
     return (
       <div className='edit-my-review-container specific-container'>
         <div className="edit-review-card specific-card">
