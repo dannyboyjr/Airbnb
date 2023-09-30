@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
+import { clearReviews } from '../../store/reviewsStore'
+import { clearBookings } from '../../store/bookings'
 import { useHistory } from 'react-router-dom';
 
 
@@ -32,6 +34,8 @@ function ProfileButton({ user }) {
   const logout = (e) => {
     e.preventDefault();
     dispatch(sessionActions.logout());
+    dispatch(clearReviews());
+    dispatch(clearBookings());
     history.push('/'); // Redirect to the home page
   };
 

@@ -4,6 +4,7 @@ import { csrfFetch } from './csrf';
 const LOAD_REVIEWS = "reviews/loadReviews";
 const LOAD_REVIEW_BY_ID = "reviews/loadReviewById";
 const DELETE_A_REVIEW = 'reviews/delete'
+const CLEAR_REVIEWS = 'reviews/clear'
 
 
 const loadReviews = (reviews) => ({ //all spots
@@ -22,6 +23,12 @@ const loadReviewById = (review) => ({
   type: LOAD_REVIEW_BY_ID,
   review,
 });
+
+export const clearReviews = () => {
+  return {
+    type: CLEAR_REVIEWS
+  };
+};
 
 export const loadAllReviews = () => async (dispatch) => {
 	const response = await csrfFetch("/api/reviews/current");
@@ -75,6 +82,10 @@ const reviewsReducer = (state = initialState, action) => {
       case LOAD_REVIEW_BY_ID:
       newState = { ...state }
       newState.reviewById = action.review
+      return newState;
+
+      case CLEAR_REVIEWS:
+      newState = {}
       return newState;
   
       default:

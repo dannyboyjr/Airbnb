@@ -6,6 +6,7 @@ const EDIT_BOOKING = "bookings/editBooking";
 const DELETE_BOOKING = "bookings/deleteBooking";
 const LOAD_SPOT_BOOKINGS = "bookings/loadSpotBookings";
 const CREATE_BOOKING = "bookings/createBooking";
+const CLEAR_BOOKINGS = 'bookings/clear'
 
 const loadBookings = (bookings) => ({
   type: LOAD_BOOKINGS,
@@ -31,6 +32,12 @@ const create = (booking) => ({
   type: CREATE_BOOKING,
   booking,
 });
+
+export const clearBookings = () => {
+  return {
+    type: CLEAR_BOOKINGS
+  };
+};
 
 export const loadUserBookings = () => async (dispatch) => {
   const response = await csrfFetch("/api/bookings/current");
@@ -116,6 +123,9 @@ const bookingsReducer = (state = initialState, action) => {
     case CREATE_BOOKING:
       newState = { ...state };
       newState[action.booking.id] = action.booking;
+      return newState;
+    case CLEAR_BOOKINGS:
+      newState = {};
       return newState;
     default:
       return state;
