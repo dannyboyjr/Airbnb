@@ -15,10 +15,12 @@ const BookingsForm = ({ id }) => {
   const currentBookingsArray = Object.values(currentBookings);
   const history = useHistory();
 
+
   const [showDatePicker, setShowDatePicker] = useState(false);
   const [checkin, setCheckin] = useState(null);
   const [checkout, setCheckout] = useState(null);
   const [guests, setGuests] = useState(null);
+
 
   //so calendar disappears after lcicking off the cal pop up.
   const datePickerRef = React.useRef();
@@ -155,6 +157,36 @@ const BookingsForm = ({ id }) => {
     };
   }, []);
 
+
+//used for making datepickers todays date transparent unless selected 
+const getDayClassName = (date) => {
+  const today = new Date();
+  const isToday =
+    date.getDate() === today.getDate() &&
+    date.getMonth() === today.getMonth() &&
+    date.getFullYear() === today.getFullYear();
+
+  const isDisabled = disabledDates.some(
+    disabledDate =>
+      disabledDate.getDate() === date.getDate() &&
+      disabledDate.getMonth() === date.getMonth() &&
+      disabledDate.getFullYear() === date.getFullYear()
+  );
+
+  const isFutureDate = checkout && date > new Date(checkout);
+
+  if (isDisabled) {
+    return 'disabled-day';
+  } else if (isToday) {
+    return 'transparent-day';
+  } else if (isFutureDate) {
+    return 'future-date';
+  }
+
+  return '';
+};
+
+
   return (
     <div className="bookingFormCard">
       <div className="topInfo">
@@ -167,7 +199,7 @@ const BookingsForm = ({ id }) => {
         </div>
       </div>
 
-      <form className="bookingForm" onSubmit={handleSubmit}>
+      <form id="external-form" className="bookingForm" onSubmit={handleSubmit}>
         <div className="checkin-checkout-boxes">
           <input
             type="text"
@@ -223,6 +255,7 @@ const BookingsForm = ({ id }) => {
                   inline
                   minDate={today}
                   excludeDates={disabledDates}
+                  dayClassName={getDayClassName}
                 />
               </div>
             </div>
