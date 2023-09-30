@@ -68,7 +68,6 @@ const BookingsForm = ({ id }) => {
 
     }
   };
-ç
   const handleDateChange = (dates) => {
     const [start, end] = dates;
     setCheckin(start);

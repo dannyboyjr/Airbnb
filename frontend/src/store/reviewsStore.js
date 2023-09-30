@@ -2,6 +2,7 @@
 import { csrfFetch } from './csrf';
 
 const LOAD_REVIEWS = "reviews/loadReviews";
+const LOAD_REVIEW_BY_ID = "reviews/loadReviewById";
 const DELETE_A_REVIEW = 'reviews/delete'
 
 
@@ -17,6 +18,11 @@ export const reviewADelete = (id) => {
   }
 }
 
+const loadReviewById = (review) => ({
+  type: LOAD_REVIEW_BY_ID,
+  review,
+});
+
 export const loadAllReviews = () => async (dispatch) => {
 	const response = await csrfFetch("/api/reviews/current");
 
@@ -25,6 +31,15 @@ export const loadAllReviews = () => async (dispatch) => {
 		dispatch(loadReviews(reviews))
 	}
 }
+
+export const fetchReviewById = (id) => async (dispatch) => {
+  const response = await csrfFetch(`/api/reviews/${id}`);
+  if (response.ok) {
+    const review = await response.json();
+    dispatch(loadReviewById(review));
+  }
+};
+
 
 export const deleteMyReview = (id) => async (dispatch) => {
   const response = await csrfFetch(`/api/reviews/${id}`, {
@@ -36,6 +51,8 @@ export const deleteMyReview = (id) => async (dispatch) => {
     dispatch(reviewADelete(id))
   }
 }
+
+
 
 
 
@@ -54,9 +71,18 @@ const reviewsReducer = (state = initialState, action) => {
         newState = { ...state }
       delete newState[action.id]
       return newState
-    default:
-      return state;
-  }
-};
+
+      case LOAD_REVIEW_BY_ID:
+      newState = { ...state }
+      newState.reviewById = action.review
+      return newState;
+  
+      default:
+        return state;
+    }
+  };
 
 export default reviewsReducer;
+
+
+      

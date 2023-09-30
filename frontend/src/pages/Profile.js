@@ -1,7 +1,4 @@
 import MyListings from "../components/MyListings/MyListings";
-import Footer from "../components/Footer/Footer";
-import SpotList from "./Home";
-import Reviews from "../components/Reviews/Reviews";
 import MyReviewList from "../components/MyReviews/MyReviewList/MyReviewList";
 import MyBookingsList from "../components/MyBookings/MyBookingsList";
 

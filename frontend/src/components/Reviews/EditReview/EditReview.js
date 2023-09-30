@@ -1,26 +1,35 @@
 
 import { useDispatch, useSelector } from 'react-redux'
-import {useState} from 'react'
-import { deleteReview, editAReview } from '../../../store/spotByIdStore';
-import { useHistory } from 'react-router-dom';
+import {useState, useEffect} from 'react'
+import { editAReview } from '../../../store/spotByIdStore';
+import { fetchReviewById } from '../../../store/reviewsStore'
+import { useHistory, useParams } from 'react-router-dom';
 import './EditReview.css'
 
 
-const EditReview = ({review}) => {
+const EditReview = () => {
+  const { id } = useParams();
+
     let sessionUser = useSelector(state => state.session.user);
-    const spot = useSelector(state => state.spotById); // Replace with the correct way to access spotById
+    let spotReview = useSelector(state => state.myReviews.reviewById); 
     let dispatch = useDispatch()
     const history = useHistory();
  
     //for stars
-    const [rating, setRating] = useState(review.stars);
+    const [rating, setRating] = useState(null);
     const [hover, setHover] = useState(0);
-    const [reviewText, setReviewText] = useState(review.review)
+    const [reviewText, setReviewText] = useState("")
     const [errors, setErrors] = useState([])
+    const [isLoaded, setIsLoaded] = useState(false);
 
     //format date time
     const dateOptions = { year: 'numeric', month: 'long', day: 'numeric' };
-    const formattedDate = new Date(review.createdAt).toLocaleDateString(undefined, dateOptions);
+    let formattedDate = ""; // Initialize to empty string
+
+    if (isLoaded && spotReview?.createdAt) {
+      formattedDate = new Date(spotReview.createdAt).toLocaleDateString(undefined, dateOptions);
+    }
+    
 
 
     const handleEdit = () => {
@@ -31,7 +40,7 @@ const EditReview = ({review}) => {
         stars:rating
       }
 
-      dispatch(editAReview(editedReview, review.id)).then(()=>{
+      dispatch(editAReview(editedReview, spotReview.id)).then(()=>{
         history.goBack();
     })
     }else{
@@ -40,14 +49,35 @@ const EditReview = ({review}) => {
 
     }
 
+  // Only fetch review data when the component mounts or 'id' changes.
+useEffect(() => {
+  dispatch(fetchReviewById(id))
+    .catch(error => console.error('Error loading data:', error));
+}, [dispatch, id]);
+
+// Update local state only when 'spotReview' changes.
+useEffect(() => {
+  if (spotReview) {  // Make sure spotReview is not undefined
+    setRating(spotReview.stars);
+    setReviewText(spotReview.review);
+    setIsLoaded(true);
+  }
+}, [spotReview]);
+
+// ... rest of your component
+
+    
+
+    console.log("EDITREVIEW")
+    console.log(reviewText)
     return (
       <div className='edit-my-review-container specific-container'>
         <div className="edit-review-card specific-card">
 
-        {spot && (
+        {isLoaded && spotReview.userId === sessionUser.id && spotReview.review &&(
           <div className="spot-info">
-            <img src={spot.SpotImages[0].url} alt={spot.name} className="spot-image-edit-reivew" />
-            <h2 className="spot-name">{spot.name}</h2>
+            <img src={spotReview.Spot.SpotImages[0].url} alt={spotReview.Spot.name} className="spot-image-edit-reivew" />
+            <h2 className="spot-name">{spotReview.Spot.name}</h2>
           </div>
         )}
 
@@ -85,13 +115,12 @@ const EditReview = ({review}) => {
           );
         })}
 
-      </div>
-        {review.userId === sessionUser.id && 
+      </div> 
           <div className='edit-review-btns'>
             <button className="save-edit-review-bnt" onClick={handleEdit}>Save</button>
             <button className="cancel-btn" onClick={()=>{history.goBack();}}>cancel</button>
           </div>
-        }
+        
       </div>
     </div>
   )
